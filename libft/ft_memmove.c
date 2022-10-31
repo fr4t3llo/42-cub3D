@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skasmi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 11:43:24 by skasmi            #+#    #+#             */
-/*   Updated: 2021/11/27 18:43:24 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/10/31 17:22:10 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+
+#include "../cub3d.h"
 
 void	*ft_memmove(void *str1, const void *str2, size_t n)
 {

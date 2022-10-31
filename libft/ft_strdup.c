@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skasmi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 15:05:08 by skasmi            #+#    #+#             */
-/*   Updated: 2021/11/27 22:34:37 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/10/31 17:24:48 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+
+#include "../cub3d.h"
 
 char	*ft_strdup(const char *s1)
 {

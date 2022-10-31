@@ -6,10 +6,11 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 14:02:32 by skasmi            #+#    #+#             */
-/*   Updated: 2021/11/27 21:44:39 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/10/31 17:21:28 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+
+#include "../cub3d.h"
 
 char	*ft_strchr(const char *str, int c)
 {

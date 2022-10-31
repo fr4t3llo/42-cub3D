@@ -6,10 +6,11 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 14:30:35 by skasmi            #+#    #+#             */
-/*   Updated: 2021/11/27 18:00:35 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/10/31 17:22:41 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+
+#include "../cub3d.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
