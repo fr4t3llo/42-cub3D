@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include <mlx.h>
+//# include <mlx.h>
 # include <math.h>
 # include <time.h>
 
@@ -29,6 +29,10 @@ typedef struct s_map
     char    *tab;
     int     fd;
 }           t_map;
+
+//parssing functions
+int ft_check_map_one(char **tab);
+
 //libft functions
 int     ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);

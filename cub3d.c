@@ -12,6 +12,26 @@
 
 #include "cub3d.h"
 
+int	ft_check_map_one(char **tab)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while(tab[i])
+	{
+		while (tab[j])
+		{
+			if (tab[i][j] != 1)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	ft_check_file_map(char **map)
 {
 	int	i;
@@ -47,9 +67,9 @@ void	ft_read_map(char **av)
 
 int	main(int ac, char **av)
 {
-	t_map	*t;
+	//t_map	*t;
 	
-	t = NULL;
+	//t = NULL;
     if (ac != 2)
 	{
 		printf("Error Args !!!\n");
