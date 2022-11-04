@@ -51,18 +51,57 @@ void	ft_read_map(char **av)
 {
 	int fd;
 	char *tab = NULL;
-	
+	char	**str;
+	int i = 0;
+	int j = 0;
+	str = NULL;
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 	{
 		printf("\033[0;31mfile not found !!\n");
 		exit(1);		
 	}
-	tab = (char *)malloc(sizeof(char *) * 100);
-	if (!tab)
-		return;
-	// tab = get_next_line(fd);
-	// printf("%s\n", tab);
+	tab = get_next_line(fd);
+	while (tab)
+	{
+		free(tab);
+		tab = get_next_line(fd);
+		i++;
+	}
+	str = (char **)malloc(sizeof(char *) * (i + 1));
+	if (!str)
+		return ;
+	close(fd);
+	fd = open(av[1], O_RDONLY);
+	str[j] = get_next_line(fd);
+	while (j < i)
+	{
+		j++;
+		str[j] = get_next_line(fd);
+	}
+	str[j] = NULL;
+}
+
+void ft_get_path(char **str, t_texture *t)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		while (str[i][j])
+		{
+			if (str[i][j] == ' ' || str[i][j] '\t')
+				j++;
+			else if (str[i][j] == 'N' && str[i][j + 1] == 'O')
+			{
+				t->no = 
+			}
+		}
+		i++;
+	}
 }
 
 int	main(int ac, char **av)

@@ -22,13 +22,21 @@
 # include <math.h>
 # include <time.h>
 
-# define BUFFER_SIZE 1
 
 typedef struct s_map
 {
     char    *tab;
     int     fd;
 }           t_map;
+
+typedef struct s_texture
+{
+	char	*no;
+	char	*no;
+	char	*we;
+	char	*ea;
+}		t_texture;
+
 
 //parssing functions
 int ft_check_map_one(char **tab);
