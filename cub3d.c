@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2022/10/31 18:13:59 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/11/05 22:37:28 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,68 +47,84 @@ int	ft_check_file_map(char **map)
 	
 }
 
-void	ft_read_map(char **av)
-{
-	int fd;
-	char *tab = NULL;
-	char	**str;
-	int i = 0;
-	int j = 0;
-	str = NULL;
-	fd = open(av[1], O_RDONLY);
-	if (fd < 0)
+// void	ft_read_map(t_map *t, char **av)
+// {
+// 	t->fd = open(av[1], O_RDONLY);
+// 	if (t->fd < 0)
+// 	{
+// 		printf("\033[0;31mfile not found !!\n");
+// 		exit(1);
+// 	}
+// 	t->tab = get_next_line(t->fd);
+// 	while (t->tab)
+// 	{
+// 		free(t->tab);
+// 		t->tab = get_next_line(t->fd);
+// 		t->i++;
+// 	}
+// 	t->str = (char **)malloc((t->i + 1) * sizeof(char *));
+// 	if (!t->str)
+// 		return ;
+// 	t->j = 0;
+// 	close(t->fd);
+// 	t->fd = open(av[1], O_RDONLY);
+// 	t->str[t->j] = get_next_line(t->fd);
+// 	while (t->j < t->i)
+// 	{
+// 		t->j++;
+// 		t->str[t->j] = get_next_line(t->fd);
+// 	}
+// 	t->str[t->j] = NULL;
+// }
+
+void	ft_read_map(t_map *t, char **av)
+{	
+	t->fd = open(av[1], O_RDONLY);
+	if (t->fd < 0)
 	{
 		printf("\033[0;31mfile not found !!\n");
 		exit(1);		
 	}
-	tab = get_next_line(fd);
-	while (tab)
+	t->tab = get_next_line(t->fd);
+	while (t->tab)
 	{
-		free(tab);
-		tab = get_next_line(fd);
-		i++;
+		free(t->tab);
+		t->tab = get_next_line(t->fd);
+		t->i++;
 	}
-	str = (char **)malloc(sizeof(char *) * (i + 1));
-	if (!str)
+	t->str = (char **)malloc((t->i + 1) * sizeof(char *));
+	if (!t->str)
 		return ;
-	close(fd);
-	fd = open(av[1], O_RDONLY);
-	str[j] = get_next_line(fd);
-	while (j < i)
+	t->j = 0;
+	close(t->fd);
+	t->fd = open(av[1], O_RDONLY);
+	t->str[t->j] = get_next_line(t->fd);
+	while (t->j < t->i)
 	{
-		j++;
-		str[j] = get_next_line(fd);
+		t->j++;
+		t->str[t->j] = get_next_line(t->fd);
 	}
-	str[j] = NULL;
+	t->str[t->j] = NULL;
+	// return (str);
 }
 
-void ft_get_path(char **str, t_texture *t)
+void ft_get_path(t_texture *t)
 {
+	t_map	map;
 	int i;
 	int j;
 
 	i = 0;
 	j = 0;
-	while (str[i])
-	{
-		while (str[i][j])
-		{
-			if (str[i][j] == ' ' || str[i][j] '\t')
-				j++;
-			else if (str[i][j] == 'N' && str[i][j + 1] == 'O')
-			{
-				t->no = 
-			}
-		}
-		i++;
-	}
+	printf("%s\n", map.str[1]);
+	//  
 }
 
 int	main(int ac, char **av)
 {
-	//t_map	*t;
-	
-	//t = NULL;
+	t_texture t;
+	t_map	map;
+
     if (ac != 2)
 	{
 		printf("Error Args !!!\n");
@@ -119,6 +135,7 @@ int	main(int ac, char **av)
 		printf("\033[0;31mextention of map must finished -> .cub !!\n");
 		exit(1);
 	}
-	ft_read_map(av);
+	ft_read_map(&map, av);
+	ft_get_path(&t);
 	return (0);
 }
