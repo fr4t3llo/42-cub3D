@@ -108,16 +108,44 @@ void	ft_read_map(t_map *t, char **av)
 	// return (str);
 }
 
-void ft_get_path(t_texture *t)
+void ft_get_path(t_map *t, t_texture *tx)
 {
-	t_map	map;
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	printf("%s\n", map.str[1]);
-	//  
+	int i = 0;
+	int j = 0;
+	while (t->str[i])
+	{
+		j = 0;
+		while(t->str[i][j])
+		{
+			if (t->str[i][j] == 'N' && t->str[i][j + 1] == 'O')
+			{
+				tx->no = malloc(sizeof(char *) * ft_strlen(t->str[i] - 1));
+				strcpy(tx->no, t->str[i]);
+				break ;
+			}
+			else if (t->str[i][j] == 'S' && t->str[i][j + 1] == 'O')
+			{
+				tx->so = malloc(sizeof(char *) * ft_strlen(t->str[i] - 1));
+                                strcpy(tx->so, t->str[i]);
+				break ;
+			}
+			else if (t->str[i][j] == 'W' && t->str[i][j + 1] == 'E')
+			{	
+				tx->we = malloc(sizeof(char *) * ft_strlen(t->str[i] - 1));
+                                strcpy(tx->we, t->str[i]);
+				break ;
+			}
+			else if (t->str[i][j] == 'E' && t->str[i][j + 1] == 'A')
+			{
+				tx->ea = malloc(sizeof(char *) * ft_strlen(t->str[i] - 1));
+                                strcpy(tx->ea, t->str[i]);
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+	printf("%s\n%s\n%s\n%s\n", tx->no, tx->so, tx->we, tx->ea);
 }
 
 int	main(int ac, char **av)
@@ -136,6 +164,6 @@ int	main(int ac, char **av)
 		exit(1);
 	}
 	ft_read_map(&map, av);
-	ft_get_path(&t);
+	ft_get_path(&map, &t);
 	return (0);
 }
