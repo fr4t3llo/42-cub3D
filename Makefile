@@ -6,7 +6,7 @@
 #    By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/30 18:55:39 by skasmi            #+#    #+#              #
-#    Updated: 2022/11/05 20:12:26 by skasmi           ###   ########.fr        #
+#    Updated: 2022/12/20 23:33:09 by skasmi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ NAME=cub3D
 NAME2=cub3d.h
 
 SRCS=cub3d.c \
+	check_error.c \
 	libft/ft_strlen.c \
 	libft/ft_memmove.c \
 	libft/ft_memcpy.c \

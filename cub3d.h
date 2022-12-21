@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2022/11/05 20:14:14 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/12/20 23:32:39 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,8 @@
 
 typedef struct s_map
 {
-	int		i;
-	int		j;
-	int		k;
     char    *tab;
-    char    **str;
+    char    **map2d;
     int     fd;
 }           t_map;
 
@@ -39,11 +36,11 @@ typedef struct s_texture
 	char	*no;
 	char	*we;
 	char	*ea;
-}		t_texture;
-
+}			t_texture;
 
 //parssing functions
-int ft_check_map_one(char **tab);
+int		ft_check_map_one(char **tab);
+int get_len(char **str);
 
 //libft functions
 int     ft_strlen(const char *str);

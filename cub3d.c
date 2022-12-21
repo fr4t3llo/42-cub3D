@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2022/11/05 22:37:28 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/12/20 23:32:48 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,38 +47,23 @@ int	ft_check_file_map(char **map)
 	
 }
 
-// void	ft_read_map(t_map *t, char **av)
+// char	**ft_get_map(char **tab)
 // {
-// 	t->fd = open(av[1], O_RDONLY);
-// 	if (t->fd < 0)
-// 	{
-// 		printf("\033[0;31mfile not found !!\n");
-// 		exit(1);
-// 	}
-// 	t->tab = get_next_line(t->fd);
-// 	while (t->tab)
-// 	{
-// 		free(t->tab);
-// 		t->tab = get_next_line(t->fd);
-// 		t->i++;
-// 	}
-// 	t->str = (char **)malloc((t->i + 1) * sizeof(char *));
-// 	if (!t->str)
-// 		return ;
-// 	t->j = 0;
-// 	close(t->fd);
-// 	t->fd = open(av[1], O_RDONLY);
-// 	t->str[t->j] = get_next_line(t->fd);
-// 	while (t->j < t->i)
-// 	{
-// 		t->j++;
-// 		t->str[t->j] = get_next_line(t->fd);
-// 	}
-// 	t->str[t->j] = NULL;
+// 	int i;
+// 	int j;
+
+// 	i = 0;
+// 	j = 0;
+// 	while ()
 // }
 
 void	ft_read_map(t_map *t, char **av)
 {	
+	int i;
+	int j;
+
+	j = 0;
+	i = 0;
 	t->fd = open(av[1], O_RDONLY);
 	if (t->fd < 0)
 	{
@@ -90,69 +75,28 @@ void	ft_read_map(t_map *t, char **av)
 	{
 		free(t->tab);
 		t->tab = get_next_line(t->fd);
-		t->i++;
-	}
-	t->str = (char **)malloc((t->i + 1) * sizeof(char *));
-	if (!t->str)
-		return ;
-	t->j = 0;
-	close(t->fd);
-	t->fd = open(av[1], O_RDONLY);
-	t->str[t->j] = get_next_line(t->fd);
-	while (t->j < t->i)
-	{
-		t->j++;
-		t->str[t->j] = get_next_line(t->fd);
-	}
-	t->str[t->j] = NULL;
-	// return (str);
-}
-
-void ft_get_path(t_map *t, t_texture *tx)
-{
-	int i = 0;
-	int j = 0;
-	while (t->str[i])
-	{
-		j = 0;
-		while(t->str[i][j])
-		{
-			if (t->str[i][j] == 'N' && t->str[i][j + 1] == 'O')
-			{
-				tx->no = malloc(sizeof(char *) * ft_strlen(t->str[i] - 1));
-				strcpy(tx->no, t->str[i]);
-				break ;
-			}
-			else if (t->str[i][j] == 'S' && t->str[i][j + 1] == 'O')
-			{
-				tx->so = malloc(sizeof(char *) * ft_strlen(t->str[i] - 1));
-                                strcpy(tx->so, t->str[i]);
-				break ;
-			}
-			else if (t->str[i][j] == 'W' && t->str[i][j + 1] == 'E')
-			{	
-				tx->we = malloc(sizeof(char *) * ft_strlen(t->str[i] - 1));
-                                strcpy(tx->we, t->str[i]);
-				break ;
-			}
-			else if (t->str[i][j] == 'E' && t->str[i][j + 1] == 'A')
-			{
-				tx->ea = malloc(sizeof(char *) * ft_strlen(t->str[i] - 1));
-                                strcpy(tx->ea, t->str[i]);
-				break ;
-			}
-			j++;
-		}
 		i++;
 	}
-	printf("%s\n%s\n%s\n%s\n", tx->no, tx->so, tx->we, tx->ea);
+	t->map2d = (char **)malloc((i + 1) * sizeof(char *));
+	if (!t->map2d)
+		return ;
+	j = 0;
+	close(t->fd);
+	t->fd = open(av[1], O_RDONLY);
+	t->map2d[j] = get_next_line(t->fd);
+	while (j < i)
+	{
+		j++;
+		t->map2d[j] = get_next_line(t->fd);
+	}
+	t->map2d[j] = NULL;
+	// return (map2d);
 }
 
 int	main(int ac, char **av)
 {
-	t_texture t;
 	t_map	map;
-
+	// int i = 0;
     if (ac != 2)
 	{
 		printf("Error Args !!!\n");
@@ -164,6 +108,8 @@ int	main(int ac, char **av)
 		exit(1);
 	}
 	ft_read_map(&map, av);
-	ft_get_path(&map, &t);
+	int k = get_len(map.map2d);
+	printf("%d\n", k);
+	// ft_get_path(&map, &t);
 	return (0);
 }
