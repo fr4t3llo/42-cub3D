@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2022/12/20 23:32:48 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/12/22 01:03:31 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,6 @@ int	ft_check_file_map(char **map)
 	
 }
 
-// char	**ft_get_map(char **tab)
-// {
-// 	int i;
-// 	int j;
-
-// 	i = 0;
-// 	j = 0;
-// 	while ()
-// }
-
 void	ft_read_map(t_map *t, char **av)
 {	
 	int i;
@@ -96,7 +86,6 @@ void	ft_read_map(t_map *t, char **av)
 int	main(int ac, char **av)
 {
 	t_map	map;
-	// int i = 0;
     if (ac != 2)
 	{
 		printf("Error Args !!!\n");
@@ -108,8 +97,15 @@ int	main(int ac, char **av)
 		exit(1);
 	}
 	ft_read_map(&map, av);
-	int k = get_len(map.map2d);
-	printf("%d\n", k);
+	map.map_height = ft_get_len_ofmap(map.map2d);
+	map.map_width = get_len(map.map2d);
+	retrun_map_2d(&map);
+	// int k = 0;
+	// while (map.map2d[k])
+	// {
+	// 	printf("%s\n", map.map2d[k]);
+	// 	k++;
+	// }
 	// ft_get_path(&map, &t);
 	return (0);
 }

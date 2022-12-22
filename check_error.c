@@ -6,40 +6,40 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 22:07:01 by skasmi            #+#    #+#             */
-/*   Updated: 2022/12/21 00:19:31 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/12/22 01:03:41 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// int ft_check_err(char **str, int i, int j)
-// {
-//     if (str[i][j + 1] != '1' && str[i][j + 1] != '0'
-//         	&& !ft_strchr("SWEN", str[i][j + 1]))
-//         return (1);
-// 	if (str[i][j - 1] != '1' && str[i][j - 1] != '0'
-// 			&& !ft_strchr("SEWN", str[i][j - 1]))
-// 		return (1);
-// 	if (str[i + 1][j] != '1' && str[i + 1][j] != '0'
-// 			&& !ft_strchr("SEWN", str[i + 1][j]))
-// 		return (1);
-// 	if (str[i - 1][j] != '1' && str[i - 1][j] != '0'
-// 			&& !ft_strchr("SEWN", str[i - 1][j]))
-// 		return (1);
-//     if (!str[i][j + 1])
-// 		return (1);
-// 	if (!str[i][j - 1])
-// 		return (1);
-// 	if (!str[i + 1][j])
-// 		return (1);
-// 	if (!str[i - 1][j])
-// 		return (1);
-// 	return (0);
-// }
+int ft_check_err(char **str, int i, int j)
+{
+    if (str[i][j + 1] != '1' && str[i][j + 1] != '0'
+        	&& !ft_strchr("SWEN", str[i][j + 1]))
+        return (1);
+	if (str[i][j - 1] != '1' && str[i][j - 1] != '0'
+			&& !ft_strchr("SEWN", str[i][j - 1]))
+		return (1);
+	if (str[i + 1][j] != '1' && str[i + 1][j] != '0'
+			&& !ft_strchr("SEWN", str[i + 1][j]))
+		return (1);
+	if (str[i - 1][j] != '1' && str[i - 1][j] != '0'
+			&& !ft_strchr("SEWN", str[i - 1][j]))
+		return (1);
+    if (!str[i][j + 1])
+		return (1);
+	if (!str[i][j - 1])
+		return (1);
+	if (!str[i + 1][j])
+		return (1);
+	if (!str[i - 1][j])
+		return (1);
+	return (0);
+}
 
 int ft_get_len_ofmap(char **str)
 {
-	int i;
+	int i = 0;
 	if (!str)
 		return (0);
 	while (str[i])
@@ -72,27 +72,47 @@ int get_len(char **str)
 	return (j);
 }
 
-char **retrun_map_2d(char **map)
+void retrun_map_2d(t_map *map)
 {
-	int i;
-	int j;
 	int k;
 	int nb;
-	char **str;
-	nb = 0;
+	
 	k = 0;
-	i = get_len(map);
-	j = ft_get_len_ofmap(map);
-	
-	
-	while (j > 0)
+	while (map->map_height > 0)
 	{
-		if (ft_strlen(map[k]) < i)
-			while ( != i)
+		if (ft_strlen(map->map2d[k]) < map->map_width)
+		{
+			nb = ft_strlen(map->map2d[k]);
+			while (nb != map->map_width)
 			{
-				map[k] = ft_strjoin(map[k], ' ');
-
+				map->map2d[k] = ft_strjoin(map->map2d[k], " ");
+				nb++;
 			} 
+			k++;
+		}
+		else
+			k++;
+		map->map_height--;
 	}
 }
 
+int ft_check_all_map(char **map)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] != '1' && map[i][j] != '0' && !ft_strchr(" SEWN", map[i][j]))
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
