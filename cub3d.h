@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2022/12/22 00:56:41 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/12/22 16:39:50 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct s_texture
 int		ft_check_map_one(char **tab);
 int		ft_check_all_map(char **map);
 int		ft_check_all_map2(t_map *map);
+int 	ft_check_horizontal(t_map *map);
+int 	ft_check_vertical(t_map *map);
 int		error(t_map *map);
 int 	get_len(char **str);
 void	retrun_map_2d(t_map *map);

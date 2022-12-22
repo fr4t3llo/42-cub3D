@@ -6,11 +6,114 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 22:07:01 by skasmi            #+#    #+#             */
-/*   Updated: 2022/12/22 01:03:41 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/12/22 16:38:59 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int ft_check_horizontal(t_map *map)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < map->map_height)
+	{
+		j = 0;
+		while (j < map->map_width)
+		{
+			if (j == 0 && map->map2d[i][j] != ' ')
+			{
+				if (map->map2d[i][j] != '1')
+					return (1);
+			}
+			else if (j == map->map_width - 1)
+			{
+				if (map->map2d[i][j] != ' ')
+					if (map->map2d[i][j] != '1')
+						return (1);
+			}
+			else if (j != 0 && map->map2d[i][j] != ' ')
+			{
+				if (map->map2d[i][j - 1] == ' ' || map->map2d[i][j + 1] == ' ')
+					if (map->map2d[i][j] != '1')
+						return (1);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+int ft_check_vertical(t_map *map)
+{
+	int i;
+	int j;
+
+	j = 0;
+	while (j < map->map_width)
+	{
+		i = 0;
+		while (i < map->map_height)
+		{
+			if (i == 0 && map->map2d[i][j] != ' ')
+			{
+				if (map->map2d[i][j] != '1')
+					return (1);
+			}
+			else if (i == map->map_height - 1)
+			{
+				if (map->map2d[i][j] != ' ')
+					if (map->map2d[i][j] != '1')
+						return (1);
+			}
+			else if (i != 0 && map->map2d[i][j] != ' ')
+			{
+				if (map->map2d[i - 1][j] == ' ' || map->map2d[i + 1][j] == ' ')
+					if (map->map2d[i][j] != '1')
+						return (1);
+			}
+			i++;
+		}
+		j++;
+	}
+	return (0);
+}
+
+// int ft_check_vertical(t_map *map)
+// {
+// 	int i;
+// 	int j;
+
+// 	i = 0;
+// 	while (i < map->map_width)
+// 	{
+// 		j = 0;
+// 		while (j < map->map_height)
+// 		{
+// 			if (j = 0 && map->map2d[i][j] != ' ')
+// 			{
+// 				if (map->map2d[i][j] != '1')
+// 					return (1);
+// 			}
+// 			else if (j = map->map_height - 1)
+// 			{
+// 				if (map->map2d[i][j] != ' ')
+// 					if (map->map2d[i][j] != '1')
+// 						return (1);
+// 			}	
+// 			else if (map->map2d[i][j] != ' ' && j != 0)
+// 			{
+				
+// 			}
+// 			j++;
+			
+// 		}
+// 		i++;
+// 	}
+// }
 
 int ft_check_err(char **str, int i, int j)
 {
@@ -39,9 +142,9 @@ int ft_check_err(char **str, int i, int j)
 
 int ft_get_len_ofmap(char **str)
 {
-	int i = 0;
-	if (!str)
-		return (0);
+	int i;
+	
+	i = 0;
 	while (str[i])
 		i++;
 	return (i);
@@ -94,6 +197,7 @@ void retrun_map_2d(t_map *map)
 			k++;
 		map->map_height--;
 	}
+	map->map_height = ft_get_len_ofmap(map->map2d);
 }
 
 int ft_check_all_map(char **map)
