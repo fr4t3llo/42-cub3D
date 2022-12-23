@@ -6,11 +6,39 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2022/12/22 16:44:05 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/12/23 22:56:07 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+
+int ft_check_rgb_txt(t_map *map)
+{
+	
+}
+int ft_check_content(t_map *map)
+{
+	int i;
+	int j;
+	int idx;
+	i = 0;
+	idx = 0;
+	while (map->map2d[i])
+	{
+		j = 0;
+		while (map->map2d[i][j])
+		{
+			if (ft_strchr("NSWE", map->map2d[i][j]))
+				idx++;
+			j++;
+		}	
+		i++;
+	}
+	if (idx > 1 || idx == 0)
+		return (1);
+	return (0);
+}
 
 int	ft_check_map_one(char **tab)
 {
@@ -99,18 +127,19 @@ int	main(int ac, char **av)
 	ft_read_map(&map, av);
 	map.map_height = ft_get_len_ofmap(map.map2d);
 	map.map_width = get_len(map.map2d);
+	retrun_map_2d(&map);
+	if (ft_check_all_map(map.map2d) == 1 || ft_check_content(&map) == 1 || ft_check_horizontal(&map) == 1 || ft_check_vertical(&map) == 1)
+	{
+		printf("error walls\n");
+		exit(EXIT_FAILURE);
+	}
+
 	// int k = 0;
 	// while (map.map2d[k])
 	// {
 	// 	printf("%s\n", map.map2d[k]);
 	// 	k++;
 	// }
-	retrun_map_2d(&map);
-	if (ft_check_all_map(map.map2d) == 1 || ft_check_horizontal(&map) == 1 || ft_check_vertical(&map) == 1)
-	{
-		printf("error walls\n");
-		exit(EXIT_FAILURE);
-	}
 	// ft_get_path(&map, &t);
 	return (0);
 }

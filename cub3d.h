@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2022/12/22 16:39:50 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/12/23 22:33:04 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <fcntl.h>
+#include <stdbool.h>
 # include <unistd.h>
 //# include <mlx.h>
 # include <math.h>
