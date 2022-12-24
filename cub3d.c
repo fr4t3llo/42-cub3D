@@ -6,12 +6,11 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2022/12/24 01:30:21 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/12/24 15:39:28 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 // int ft_check_rgb_txt(t_map *map)
 // {
@@ -119,7 +118,6 @@ void	ft_read_map(t_map *t, char **av)
 		t->map2d[j] = get_next_line(t->fd);
 	}
 	t->map2d[j] = NULL;
-	// return (map2d);
 }
 
 int	main(int ac, char **av)
