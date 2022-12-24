@@ -6,17 +6,28 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2022/12/23 22:56:07 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/12/24 01:30:21 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 
-int ft_check_rgb_txt(t_map *map)
-{
-	
-}
+// int ft_check_rgb_txt(t_map *map)
+// {
+// 	int i;
+// 	int j;
+
+// 	i = 0;
+// 	while (map->map2d[i])
+// 	{
+// 		j = 0;
+// 		while (map->map2d[i][j])
+// 		{
+// 			if (map->map2d[i][j])
+// 		}
+// 	}
+// }
 int ft_check_content(t_map *map)
 {
 	int i;

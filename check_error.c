@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 22:07:01 by skasmi            #+#    #+#             */
-/*   Updated: 2022/12/23 22:50:18 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/12/24 01:35:53 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,11 @@ int ft_check_vertical(t_map *map)
 			{
 				if (map->map2d[i - 1][j] == ' ' || map->map2d[i + 1][j] == ' ')
 					if (map->map2d[i][j] != '1')
+					{
+						printf("%d   %d", i, j);
+						printf("testgsdgs\n");	
 						return (1);
+					}
 			}
 			i++;
 		}
@@ -81,39 +85,6 @@ int ft_check_vertical(t_map *map)
 	}
 	return (0);
 }
-
-// int ft_check_vertical(t_map *map)
-// {
-// 	int i;
-// 	int j;
-
-// 	i = 0;
-// 	while (i < map->map_width)
-// 	{
-// 		j = 0;
-// 		while (j < map->map_height)
-// 		{
-// 			if (j = 0 && map->map2d[i][j] != ' ')
-// 			{
-// 				if (map->map2d[i][j] != '1')
-// 					return (1);
-// 			}
-// 			else if (j = map->map_height - 1)
-// 			{
-// 				if (map->map2d[i][j] != ' ')
-// 					if (map->map2d[i][j] != '1')
-// 						return (1);
-// 			}	
-// 			else if (map->map2d[i][j] != ' ' && j != 0)
-// 			{
-				
-// 			}
-// 			j++;
-			
-// 		}
-// 		i++;
-// 	}
-// }
 
 int ft_check_err(char **str, int i, int j)
 {

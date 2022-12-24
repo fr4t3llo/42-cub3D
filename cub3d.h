@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2022/12/23 22:33:04 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/12/23 23:47:53 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_map
 {
     char    *tab;
     char    **map2d;
+	char	**txt_rgb;
     int     fd;
 	int		map_width;
 	int		map_height;
