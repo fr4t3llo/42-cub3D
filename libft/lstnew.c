@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   lstnew.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/30 19:44:31 by skasmi            #+#    #+#             */
-/*   Updated: 2022/12/24 18:51:25 by skasmi           ###   ########.fr       */
+/*   Created: 2022/12/29 15:33:14 by skasmi            #+#    #+#             */
+/*   Updated: 2022/12/29 15:33:27 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int ft_check_rgb_txt(t_map *map, t_texture *t)
+t_list	*ft_lstnew(void *content)
 {
-	int i;
-	int j;
+	t_list	*element;
 
-	i = 0;
-	while (map->map2d[i])
-	{
-		j = 0;
-		while (map->map2d[i][j])
-		{
-			if (ft_strchr("N", map->map2d[i][j]) == 1 && ft_strchr("N", map->map2d[i][j + 1]) == 1)
-			{
-				while (map.ma)
-			}
-		}
-	}
+	element = (t_list *)malloc(sizeof(t_list));
+	if (element == NULL)
+		return (NULL);
+	element->content = content;
+	element->next = NULL;
+	return (element);
 }

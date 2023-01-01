@@ -6,11 +6,18 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 22:07:01 by skasmi            #+#    #+#             */
-/*   Updated: 2022/12/24 01:35:53 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/12/29 21:22:15 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void ft_trim_txtr(t_map *map)
+{
+	int i = 0;
+
+	while (map->map2d[])
+}
 
 int ft_check_horizontal(t_map *map)
 {
@@ -191,3 +198,21 @@ int ft_check_all_map(char **map)
 	}
 	return (0);
 }
+
+// void ft_add_to_tab(t_map *map)
+// {
+// 	int k = 0;
+// 	char *str = NULL;
+// 	while (map->map2d[k])
+// 	{
+// 		str = ft_strjoin(str, map->map2d[k]);
+// 		k++;
+// 	}
+// 	map->txt_rgb = ft_split(str, ' ');
+// 	int i = 0;
+// 	while (map->txt_rgb[i])
+// 	{
+// 		printf("%s\n", map->txt_rgb[i]);
+// 		i++;
+// 	}
+// }

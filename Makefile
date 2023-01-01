@@ -6,19 +6,21 @@
 #    By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/30 18:55:39 by skasmi            #+#    #+#              #
-#    Updated: 2022/12/22 21:47:21 by skasmi           ###   ########.fr        #
+#    Updated: 2022/12/27 21:32:10 by skasmi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=cc
-CFLAGS=  -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS=  -Wall -Wextra -Werror -Imlx -g -fsanitize=address
 
 NAME=cub3D
 NAME2=cub3d.h
 
 SRCS=cub3d.c \
+	utils_2.c\
 	check_error.c \
 	libft/ft_strlen.c \
+	libft/ft_split.c \
 	libft/ft_memmove.c \
 	libft/ft_memcpy.c \
 	get_next_line/get_next_line.c \
@@ -29,7 +31,7 @@ BOBJCTS=$(BSRCS:%.c=%.o)
 OBJCTS=$(SRCS:%.c=%.o)
 
 $(NAME) : $(OBJCTS) $(NAME2)
-		$(CC) $(CFLAGS)  $(OBJCTS) -o $(NAME) 
+		$(CC) $(CFLAGS) -L /usr/local/lib -lmlx -framework OpenGl -framework AppKit $(OBJCTS) -o $(NAME) 
 			
 	@echo "\033[31m░█████╗░\033[31m██╗░░░██╗\033[31m██████╗░  \033[32m██████╗░\033[32m██████╗░"
 	@echo "\033[31m██╔══██╗\033[31m██║░░░██║\033[31m██╔══██╗  \033[32m╚════██╗\033[32m██╔══██╗"

@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   lstadd_back.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/30 19:44:31 by skasmi            #+#    #+#             */
-/*   Updated: 2022/12/24 18:51:25 by skasmi           ###   ########.fr       */
+/*   Created: 2022/12/29 15:47:39 by skasmi            #+#    #+#             */
+/*   Updated: 2022/12/29 15:53:35 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int ft_check_rgb_txt(t_map *map, t_texture *t)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int i;
-	int j;
-
-	i = 0;
-	while (map->map2d[i])
-	{
-		j = 0;
-		while (map->map2d[i][j])
-		{
-			if (ft_strchr("N", map->map2d[i][j]) == 1 && ft_strchr("N", map->map2d[i][j + 1]) == 1)
-			{
-				while (map.ma)
-			}
-		}
-	}
+	if (!*lst)
+		*lst = new;
+	else
+		ft_lstlast(*lst)->next = new;
 }

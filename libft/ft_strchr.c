@@ -6,13 +6,13 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 14:02:32 by skasmi            #+#    #+#             */
-/*   Updated: 2022/10/31 17:21:28 by skasmi           ###   ########.fr       */
+/*   Updated: 2022/12/29 16:04:00 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr(char *str, int c)
 {
 	int		i;
 	char	*s;

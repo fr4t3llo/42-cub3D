@@ -6,27 +6,14 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2022/12/24 15:39:28 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/01 16:13:31 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// int ft_check_rgb_txt(t_map *map)
-// {
-// 	int i;
-// 	int j;
 
-// 	i = 0;
-// 	while (map->map2d[i])
-// 	{
-// 		j = 0;
-// 		while (map->map2d[i][j])
-// 		{
-// 			if (map->map2d[i][j])
-// 		}
-// 	}
-// }
+
 int ft_check_content(t_map *map)
 {
 	int i;
@@ -119,9 +106,69 @@ void	ft_read_map(t_map *t, char **av)
 	}
 	t->map2d[j] = NULL;
 }
-
+void	draw_map(t_map *map)
+{
+	map->mlx_ptr = mlx_init();
+	if (!map->mlx_ptr)
+	{
+		printf("error\n");
+		exit(1);
+	}
+	int i = 0;
+	int j;
+	int x = 0;
+	int y = 0;
+	map->mlx_win = mlx_new_window(map->mlx_ptr, 1950, 1108, "FRATELLO CUB3D");
+	map->mlx_red = mlx_xpm_file_to_image(map->mlx_ptr, "xpmfile/red.xpm" , &map->width, &map->height);
+	map->mlx_chibi = mlx_xpm_file_to_image(map->mlx_ptr, "xpmfile/chibi.xpm" , &map->width, &map->height);
+	// map->mlx_rose = mlx_xpm_file_to_image(map->mlx_ptr, "rose.xpm" , &map->width, &map->height);
+	map->mlx_jnbfo9 = mlx_xpm_file_to_image(map->mlx_ptr, "xpmfile/jenb-fo9.xpm", &map->width, &map->height);
+	map->mlx_jnbte7t = mlx_xpm_file_to_image(map->mlx_ptr, "xpmfile/jenbte7t.xpm", &map->width, &map->height);
+	map->mlx_rightte7t = mlx_xpm_file_to_image(map->mlx_ptr, "xpmfile/right-te7t.xpm", &map->width, &map->height);
+	map->mlx_rightfo9 = mlx_xpm_file_to_image(map->mlx_ptr, "xpmfile/rightfo9.xpm", &map->width, &map->height);
+	while (map->map2d[i])
+	{
+		j = 0;
+		while (map->map2d[i][j])
+		{
+			if (map->map2d[i][j] == '1')
+			{
+				mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->mlx_red, x, y);
+			}
+			else if (map->map2d[i][j] == '0')
+			{
+				mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->mlx_chibi, x, y);
+			}
+			else if (map->map2d[i][j] == '7')
+			{
+				mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->mlx_jnbfo9, x, y);
+			}
+			else if (map->map2d[i][j] == '2')
+			{
+				mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->mlx_jnbte7t, x, y);
+			}
+			else if (map->map2d[i][j] == '3')
+			{
+				mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->mlx_rightte7t, x, y);
+			}
+			else if (map->map2d[i][j] == '9')
+			{
+				mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->mlx_rightfo9, x, y);
+			}
+			// {
+			// 	mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->mlx_rose, x, y);
+			// }
+			x += 65;
+			j++;
+		}
+		y += 65;
+		x = 0;
+		i++;
+	}
+}
 int	main(int ac, char **av)
 {
+	
 	t_map	map;
     if (ac != 2)
 	{
@@ -136,19 +183,17 @@ int	main(int ac, char **av)
 	ft_read_map(&map, av);
 	map.map_height = ft_get_len_ofmap(map.map2d);
 	map.map_width = get_len(map.map2d);
+	// ft_add_to_list(&map);
 	retrun_map_2d(&map);
 	if (ft_check_all_map(map.map2d) == 1 || ft_check_content(&map) == 1 || ft_check_horizontal(&map) == 1 || ft_check_vertical(&map) == 1)
 	{
 		printf("error walls\n");
 		exit(EXIT_FAILURE);
 	}
-
-	// int k = 0;
-	// while (map.map2d[k])
-	// {
-	// 	printf("%s\n", map.map2d[k]);
-	// 	k++;
-	// }
+	// ft_add_to_tab(&map);
+	// add_to_tab_2d(&map);
 	// ft_get_path(&map, &t);
+	// draw_map(&map);
+	// mlx_loop(map.mlx_ptr);
 	return (0);
 }
