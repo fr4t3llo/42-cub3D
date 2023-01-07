@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 22:24:54 by skasmi            #+#    #+#             */
-/*   Updated: 2022/12/29 20:40:19 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/07 18:57:30 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		ft_tolower(int nb);
 int		ft_toupper(int nb);
 void	*ft_calloc(size_t count, size_t size);
 int		ft_atoi(const char *str);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_substr(char *s, int start, int len);
 // char	*ft_strdup(const char *s1);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
@@ -52,7 +52,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 // char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_strtrim(char *s1, char *set);
 
 
 //list

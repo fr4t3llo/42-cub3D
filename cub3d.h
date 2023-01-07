@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/01 16:13:14 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/07 19:41:50 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <fcntl.h>
-#include <stdbool.h>
+# include <stdbool.h>
 # include <unistd.h>
 # include <mlx.h>
 # include <math.h>
@@ -75,7 +75,8 @@ void	retrun_map_2d(t_map *map);
 int 	ft_get_len_ofmap(char **str);
 void	check_line_txt_rgb(char *str, t_map *map);
 int 	ft_check_line_ifnotinmap(char *line);
-void 	ft_check_line_before_map(char **map2d, t_map *map);
+void 	ft_check_line_before_map(char **str, t_map *map);
+int		ft_check_number_of_comma(char *str);
 void 	ft_count(t_map *map);
 
 

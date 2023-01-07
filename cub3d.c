@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/01 16:13:31 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/07 19:48:12 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,17 +183,14 @@ int	main(int ac, char **av)
 	ft_read_map(&map, av);
 	map.map_height = ft_get_len_ofmap(map.map2d);
 	map.map_width = get_len(map.map2d);
-	// ft_add_to_list(&map);
 	retrun_map_2d(&map);
-	if (ft_check_all_map(map.map2d) == 1 || ft_check_content(&map) == 1 || ft_check_horizontal(&map) == 1 || ft_check_vertical(&map) == 1)
-	{
-		printf("error walls\n");
-		exit(EXIT_FAILURE);
-	}
-	// ft_add_to_tab(&map);
-	// add_to_tab_2d(&map);
-	// ft_get_path(&map, &t);
-	// draw_map(&map);
-	// mlx_loop(map.mlx_ptr);
+	// if (ft_check_all_map(map.map2d) == 1 || ft_check_content(&map) == 1 || ft_check_horizontal(&map) == 1 || ft_check_vertical(&map) == 1)
+	// {
+	// 	printf("error walls\n");
+	// 	exit(EXIT_FAILURE);
+	// }
+	ft_check_line_before_map(map.map2d, &map);
+	draw_map(&map);
+	mlx_loop(map.mlx_ptr);
 	return (0);
 }
