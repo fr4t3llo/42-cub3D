@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/07 19:41:50 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/15 22:55:03 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int 	ft_check_line_ifnotinmap(char *line);
 void 	ft_check_line_before_map(char **str, t_map *map);
 int		ft_check_number_of_comma(char *str);
 void 	ft_count(t_map *map);
+char 	**ft_check_map_len(t_map *t);
 
 
 // libft functions

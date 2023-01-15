@@ -6,11 +6,33 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:44:09 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/07 19:44:06 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/15 22:56:31 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+char **ft_check_map_len(t_map *t)
+{
+	int nb;
+	int index;
+	char **map;
+	int i;
+
+	i = 0;
+	map = NULL;
+	nb = ft_get_len_ofmap(t->map2d) - t->line_empty - 6;
+	index = t->map_height - nb;
+	while (index != t->map_height)
+	{
+		printf("%s\n", map[i]);
+		printf("im here\n");
+		map[i] = ft_strjoin(map[i], t->map2d[index]);
+		index++;
+		i++;
+	}
+	return (map);
+}
 
 int ft_check_line_ifnotinmap(char *line)
 {
@@ -38,13 +60,11 @@ void ft_check_line_before_map(char **str, t_map *map)
 		if (line[0] && ft_check_line_ifnotinmap(line) == 0)
 		{
 			free(line);
-			printf("%d\n", map->line_empty);
 			break;
 		}
 		check_line_txt_rgb(line, map);
 		free(line);
 		i++;
-		// free 
 	}
 	// check if exist;	
 }

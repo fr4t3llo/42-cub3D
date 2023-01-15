@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/07 19:48:12 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/15 19:12:26 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,8 @@ int	main(int ac, char **av)
 	// 	exit(EXIT_FAILURE);
 	// }
 	ft_check_line_before_map(map.map2d, &map);
-	draw_map(&map);
-	mlx_loop(map.mlx_ptr);
+	ft_check_map_len(&map);
+	// draw_map(&map);
+	// mlx_loop(map.mlx_ptr);
 	return (0);
 }
