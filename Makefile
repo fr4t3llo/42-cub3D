@@ -6,7 +6,7 @@
 #    By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/30 18:55:39 by skasmi            #+#    #+#              #
-#    Updated: 2023/01/17 02:20:13 by skasmi           ###   ########.fr        #
+#    Updated: 2023/01/17 18:56:44 by skasmi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,11 @@ NAME=cub3D
 NAME2=cub3d.h
 
 SRCS=cub3d.c \
-	utils_2.c\
-	check_error.c \
+	parssing/pars_rgb/pars_rgb.c \
+	parssing/pars_rgb/pars_rgb_2.c \
+	parssing/pars_map/pars_map.c \
+	parssing/pars_map/pars_map_2.c \
+	parssing/pars_map/pars_map_3.c \
 	libft/ft_strlen.c \
 	libft/ft_split.c \
 	libft/ft_strtrim.c \

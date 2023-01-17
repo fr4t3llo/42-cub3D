@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/17 02:36:28 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/17 18:31:25 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,14 @@ void	check_line_txt_rgb(char *str, t_map *map);
 int 	ft_check_line_ifnotinmap(char *line);
 void 	ft_check_line_before_map(char **str, t_map *map);
 int		ft_check_number_of_comma(char *str);
-void 	ft_count(t_map *map);
 void 	ft_check_map_len(t_map *t);
+
+                //RGB FUNCTIONS
+void	ft_check_txt(char *line, char *test, t_map *map);
+int 	ft_check_rgb_error_f(char *line, t_rgb t);
+int 	ft_check_rgb_error_c(char *line, t_rgb t);
+void	ft_check_color2(char *line, t_map *map);
+void	ft_check_color(char *line, t_map *map);
 
 
 // libft functions
