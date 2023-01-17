@@ -6,7 +6,7 @@
 #    By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/30 18:55:39 by skasmi            #+#    #+#              #
-#    Updated: 2023/01/06 22:43:41 by skasmi           ###   ########.fr        #
+#    Updated: 2023/01/17 02:20:13 by skasmi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS=cub3d.c \
 	libft/ft_memmove.c \
 	libft/ft_substr.c \
 	libft/ft_memcpy.c \
+	libft/ft_atoi.c \
 	get_next_line/get_next_line.c \
 	get_next_line/get_next_utils.c \
 	

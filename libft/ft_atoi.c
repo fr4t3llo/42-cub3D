@@ -6,9 +6,10 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 18:18:40 by skasmi            #+#    #+#             */
-/*   Updated: 2021/11/25 17:20:38 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/17 02:26:18 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 int	ft_atoi(const char *str)
