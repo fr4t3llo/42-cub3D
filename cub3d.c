@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/18 02:43:12 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/18 18:07:51 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,16 +255,14 @@ int	main(int ac, char **av)
 	retrun_map_2d(&map);
 	ft_check_line_before_map(map.all_map2d, &map);
 	ft_check_map_len(&map);
-	map.width_only_map = get_width(map.only_map);
-	// map.height_only_map = get_height(map.only_map);
-	printf("test\n");
-	printf("[[%d]]]]\n", map.width_only_map);
 	if (ft_export_only_map2d(&map) == 1)
 	{
 		printf("error");
 		exit(1);
 	}
-	if (ft_check_all_map(map.only_map) == 1 || ft_check_content(&map) == 1 || /*ft_check_horizontal(&map) == 1 ||*/ ft_check_vertical(&map) == 1)
+	map.width_only_map = get_width(map.only_map);
+	map.height_only_map = get_height(map.only_map);
+	if (ft_check_all_map(map.only_map) == 1 || ft_check_content(&map) == 1 || ft_check_horizontal(&map) == 1 || ft_check_vertical(&map) == 1)
 	{
 		printf("error walls\n");
 		exit(EXIT_FAILURE);

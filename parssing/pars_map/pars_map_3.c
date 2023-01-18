@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:44:09 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/18 01:14:10 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/18 18:03:11 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void ft_check_map_len(t_map *t)
 			t->export_only_map = ft_strjoin(t->export_only_map, "\n");
 		i++;
 	}
+	t->export_only_map = ft_strjoin(t->export_only_map, "\0"); //hadi fiha mochkil wach ghadi nkhliha wla la  
     
 }
 
