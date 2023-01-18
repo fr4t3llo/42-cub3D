@@ -6,12 +6,12 @@
 #    By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/30 18:55:39 by skasmi            #+#    #+#              #
-#    Updated: 2023/01/17 18:56:44 by skasmi           ###   ########.fr        #
+#    Updated: 2023/01/17 23:30:43 by skasmi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=cc
-CFLAGS=  -Wall -Wextra -Werror -Imlx -g -fsanitize=address
+CFLAGS=  -Wall -Wextra -Werror -Imlx -g -fsanitize=address,undefined,integer 
 
 NAME=cub3D
 NAME2=cub3d.h

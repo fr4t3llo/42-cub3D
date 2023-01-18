@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/17 18:31:25 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/18 01:00:41 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_map
 {
     char    *tab;
     char    **map2d;
+	char	**only_map;
     char    *export_only_map;
 	char	**txt_rgb;
     int     fd;
@@ -66,12 +67,12 @@ typedef struct s_texture
 
 typedef struct s_rgb
 {
-	int r_F;
-	int g_F;
-	int b_F;
-	int r_C;
-	int g_C;
-	int b_C;
+	long long r_F;
+	long long g_F;
+	long long b_F;
+	long long r_C;
+	long long g_C;
+	long long b_C;
 }		t_rgb;	
 
 // parssing functions
@@ -103,7 +104,7 @@ int     ft_strlen(char *str);
 void	*ft_memmove(void *str1, const void *str2, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 char	*ft_strdup(const char *s1);
-int		ft_atoi(const char *str);
+long long	ft_atoi(const char *str);
 
 // list libft
 t_list	*ft_lstnew(void *content);

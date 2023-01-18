@@ -6,13 +6,11 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/17 01:38:02 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/18 01:01:28 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-
 
 int ft_check_content(t_map *map)
 {
@@ -166,9 +164,44 @@ void	draw_map(t_map *map)
 		i++;
 	}
 }
+
+int check_empty_line(t_map *t)
+{
+	int i;
+
+	i = 0;
+	while (t->export_only_map[i])
+	{
+		if (t->export_only_map[i] == '\n' && t->export_only_map[i + 1] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);	
+}
+
+int ft_export_only_map2d(t_map *t)
+{
+	char *str;
+	char *check;
+	int i;
+
+	str = NULL;
+	i = 0; 
+	t->only_map = ft_split(t->export_only_map, '\n');
+	while (t->only_map[i])
+	{
+		str = ft_strjoin(str, t->only_map[i]);
+		check = ft_strtrim(str, " \t\n");
+		if (check[0] == '\0')
+			return (1);
+		str = NULL;
+		i++;
+	}
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
-	
 	t_map	map;
     if (ac != 2)
 	{
@@ -184,13 +217,18 @@ int	main(int ac, char **av)
 	map.map_height = ft_get_len_ofmap(map.map2d);
 	map.map_width = get_len(map.map2d);
 	retrun_map_2d(&map);
-	// if (ft_check_all_map(map.map2d) == 1 || ft_check_content(&map) == 1 || ft_check_horizontal(&map) == 1 || ft_check_vertical(&map) == 1)
-	// {
-	// 	printf("error walls\n");
-	// 	exit(EXIT_FAILURE);
-	// }
 	ft_check_line_before_map(map.map2d, &map);
 	ft_check_map_len(&map);
+	if (ft_export_only_map2d(&map) == 1)
+	{
+		printf("error");
+		exit(1);
+	}
+	if (ft_check_all_map(map.only_map) == 1 || ft_check_content(&map) == 1 || ft_check_horizontal(&map) == 1 || ft_check_vertical(&map) == 1)
+	{
+		printf("error walls\n");
+		exit(EXIT_FAILURE);
+	}
 	// draw_map(&map);
 	// mlx_loop(map.mlx_ptr);
 	return (0);

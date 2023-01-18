@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:44:09 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/17 18:56:18 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/17 23:48:01 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void ft_check_map_len(t_map *t)
 			t->export_only_map = ft_strjoin(t->export_only_map, "\n");
 		i++;
 	}
-	// printf("%s\n", t->export_only_map);
+    
 }
 
 void ft_check_line_before_map(char **str, t_map *map)
