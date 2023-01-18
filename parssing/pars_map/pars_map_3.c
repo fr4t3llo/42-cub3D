@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:44:09 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/17 23:48:01 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/18 01:14:10 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void ft_check_map_len(t_map *t)
 
 	i = 0;
 	t->export_only_map = NULL;
-	nb = ft_get_len_ofmap(t->map2d) - t->line_empty - 6;
+	nb = ft_get_len_ofmap(t->all_map2d) - t->line_empty - 6;
 	index = t->map_height - nb;
 	while (index != t->map_height)
 	{
-		t->export_only_map = ft_strjoin(t->export_only_map, t->map2d[index]);
+		t->export_only_map = ft_strjoin(t->export_only_map, t->all_map2d[index]);
 		index++;
 		if (index != t->map_height)
 			t->export_only_map = ft_strjoin(t->export_only_map, "\n");

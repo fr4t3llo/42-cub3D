@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:33:03 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/17 18:54:21 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/18 01:07:44 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 int	ft_cmplt_horz(t_map *map, int i, int j)
 {
-	if (j == 0 && map->map2d[i][j] != ' ')
+	if (j == 0 && map->only_map[i][j] != ' ')
 	{
-		if (map->map2d[i][j] != '1')
+		if (map->only_map[i][j] != '1')
 			return (1);
 	}
 	else if (j == map->map_width - 1)
 	{
-		if (map->map2d[i][j] != ' ')
-			if (map->map2d[i][j] != '1')
+		if (map->only_map[i][j] != ' ')
+			if (map->only_map[i][j] != '1')
 				return (1);
 	}
-	else if (j != 0 && map->map2d[i][j] != ' ')
+	else if (j != 0 && map->only_map[i][j] != ' ')
 	{
-		if (map->map2d[i][j - 1] == ' ' || map->map2d[i][j + 1] == ' ')
-			if (map->map2d[i][j] != '1')
+		if (map->only_map[i][j - 1] == ' ' || map->only_map[i][j + 1] == ' ')
+			if (map->only_map[i][j] != '1')
 				return (1);
 	}
     return (0);
@@ -55,21 +55,21 @@ int	ft_check_horizontal(t_map *map)
 
 int	ft_cmplt_ver(t_map *map, int i, int j)
 {
-	if (i == 0 && map->map2d[i][j] != ' ')
+	if (i == 0 && map->only_map[i][j] != ' ')
 	{
-		if (map->map2d[i][j] != '1')
+		if (map->only_map[i][j] != '1')
 			return (1);
 	}
 	else if (i == map->map_height - 1)
 	{
-		if (map->map2d[i][j] != ' ')
-			if (map->map2d[i][j] != '1')
+		if (map->only_map[i][j] != ' ')
+			if (map->only_map[i][j] != '1')
 				return (1);
 	}
-	else if (i != 0 && map->map2d[i][j] != ' ')
+	else if (i != 0 && map->only_map[i][j] != ' ')
 	{
-		if (map->map2d[i - 1][j] == ' ' || map->map2d[i + 1][j] == ' ')
-			if (map->map2d[i][j] != '1')
+		if (map->only_map[i - 1][j] == ' ' || map->only_map[i + 1][j] == ' ')
+			if (map->only_map[i][j] != '1')
 				return (1);
 	}
     return (0);

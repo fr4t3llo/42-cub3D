@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/18 01:00:41 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/18 01:13:59 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_list
 typedef struct s_map
 {
     char    *tab;
-    char    **map2d;
+    char    **all_map2d;
 	char	**only_map;
     char    *export_only_map;
 	char	**txt_rgb;
