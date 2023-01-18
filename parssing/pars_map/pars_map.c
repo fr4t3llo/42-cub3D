@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:33:03 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/18 01:07:44 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/18 02:19:43 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	ft_check_horizontal(t_map *map)
 
 int	ft_cmplt_ver(t_map *map, int i, int j)
 {
+	printf("ana hna \n");
 	if (i == 0 && map->only_map[i][j] != ' ')
 	{
 		if (map->only_map[i][j] != '1')

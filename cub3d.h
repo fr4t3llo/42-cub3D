@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/18 01:13:59 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/18 02:22:52 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,10 @@ typedef struct s_map
 	void	*mlx_jnbte7t;
 	void	*mlx_rightte7t;
 	void	*mlx_rightfo9;
-	int		width;
-	int		height;
+	int		width_only_map;
+	int		height_only_map;
+	int 	width;
+	int 	height;
 	int		line_empty;
 }           t_map;
 

@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/18 01:26:00 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/18 02:43:12 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,42 @@ int ft_export_only_map2d(t_map *t)
 	return (0);
 }
 
+int get_width(char **str)
+{
+	int i;
+	int j;
+	int len;
+
+	len = 0;
+	i = 0;
+	j = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+	{
+		len = ft_strlen(str[i]);
+		if (j < len)
+		{
+			j = len;
+			i++;	
+		}
+		else
+			i++;
+	}
+	return (j);
+}
+
+int get_height(char **str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);	
+}
+
+
 int	main(int ac, char **av)
 {
 	t_map	map;
@@ -214,22 +250,25 @@ int	main(int ac, char **av)
 		exit(1);
 	}
 	ft_read_map(&map, av);
-	// printf("%s\n", map.map2d[1]);
 	map.map_height = ft_get_len_ofmap(map.all_map2d);
 	map.map_width = get_len(map.all_map2d);
 	retrun_map_2d(&map);
 	ft_check_line_before_map(map.all_map2d, &map);
 	ft_check_map_len(&map);
+	map.width_only_map = get_width(map.only_map);
+	// map.height_only_map = get_height(map.only_map);
+	printf("test\n");
+	printf("[[%d]]]]\n", map.width_only_map);
 	if (ft_export_only_map2d(&map) == 1)
 	{
 		printf("error");
 		exit(1);
 	}
-	// if (ft_check_all_map(map.only_map) == 1 || ft_check_content(&map) == 1 || ft_check_horizontal(&map) == 1 || ft_check_vertical(&map) == 1)
-	// {
-	// 	printf("error walls\n");
-	// 	exit(EXIT_FAILURE);
-	// }
+	if (ft_check_all_map(map.only_map) == 1 || ft_check_content(&map) == 1 || /*ft_check_horizontal(&map) == 1 ||*/ ft_check_vertical(&map) == 1)
+	{
+		printf("error walls\n");
+		exit(EXIT_FAILURE);
+	}
 	// draw_map(&map);
 	// mlx_loop(map.mlx_ptr);
 	return (0);

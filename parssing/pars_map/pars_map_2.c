@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:44:31 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/18 01:00:56 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/18 02:15:41 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int get_len(char **str)
 		else
 			i++;
 	}
+	printf("%d\n", j);
 	return (j);
 }
 
@@ -56,12 +57,12 @@ void retrun_map_2d(t_map *map)
 	k = 0;
 	while (map->map_height > 0)
 	{
-		if (ft_strlen(map->map2d[k]) < map->map_width)
+		if (ft_strlen(map->all_map2d[k]) < map->map_width)
 		{
-			nb = ft_strlen(map->map2d[k]);
+			nb = ft_strlen(map->all_map2d[k]);
 			while (nb != map->map_width)
 			{
-				map->map2d[k] = ft_strjoin(map->map2d[k], " ");
+				map->all_map2d[k] = ft_strjoin(map->all_map2d[k], " ");
 				nb++;
 			} 
 			k++;
@@ -70,7 +71,7 @@ void retrun_map_2d(t_map *map)
 			k++;
 		map->map_height--;
 	}
-	map->map_height = ft_get_len_ofmap(map->map2d);
+	map->map_height = ft_get_len_ofmap(map->all_map2d);
 }
 
 int ft_check_all_map(char **map) // khassni n3tiha ghi map 2d machi map.cub kolha
