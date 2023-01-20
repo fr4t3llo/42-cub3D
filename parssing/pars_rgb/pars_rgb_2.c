@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:23:44 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/19 01:19:07 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/20 23:58:18 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,19 @@ void	ft_check_txt_no(char *line, char *test, t_map *map)
 	(void)test;
 }
 
-void copy_texture(char *type, char path, t_texture *t)
+void copy_texture(char *type, char *path, t_texture *t)
 {
-	if (path == 'W')
-		t->we = ft_strdup(type);
-	else if (path == 'E')
-		t->ea = ft_strdup(type);
-	else if (path == 'S')
-		t->so = ft_strdup(type);
-	else if (path == 'N')
-		t->no = ft_strdup(type);
+	if (type[0] == 'W')
+		t->we = ft_strdup(path);
+	else if (type[0] == 'E')
+		t->ea = ft_strdup(path);
+	else if (type[0] == 'S')
+		t->so = ft_strdup(path);
+	else if (type[0] == 'N')
+		t->no = ft_strdup(path);
 	else 
 	{
-		printf("Error\n");
+		printf("Error texture\n");
 		exit (1);
 	}
 }
@@ -85,39 +85,41 @@ void ft_check_txt(char *path, char *type, t_texture *t)
 	
 	len = ft_strlen(path);
 	i = 0;
+	char **str = ft_split(path, ' ');
 	if (!ft_strncmp(path, type, 3) /*|| ft_strchr(".xpm", path[])*/)
 	{
-		
-		path = ft_strnstr(path, "../xpmfile", len);
-		fd = open(path, O_RDONLY);
+		fd = open(str[1], O_RDONLY);
 		if (fd < 0)
 		{
 			printf("Error texture\n");
 			exit (1);
 		}
 		close(fd);
-		copy_texture(&type[0], path[0], t);
+		copy_texture(&type[0], str[1], t);
 	}
 	
 }
 
 void	check_line_txt_rgb(char *str, t_map *map)
 {
-	t_texture *t;
+	t_texture t;
 	
-	t = NULL;
+	t.ea = NULL;
+	t.we = NULL;
+	t.so = NULL;
+	t.no = NULL;
 	if (str[0] && str[0] == 'C')
 		ft_check_color2(str, map);
 	else if (str[0] && str[0] == 'F')
 		ft_check_color(str, map);
 	else if (str[0] && str[0] == 'S')
-		ft_check_txt(str, "SO ", t);
+		ft_check_txt(str, "SO ", &t);
 	else if (str[0] && str[0] == 'N')
-		ft_check_txt(str, "NO ", t);
+		ft_check_txt(str, "NO ", &t);
 	else if (str[0] && str[0] == 'E')
-		ft_check_txt(str, "EA ", t);
+		ft_check_txt(str, "EA ", &t);
 	else if (str[0] && str[0] == 'W')
-		ft_check_txt(str, "WE ", t);
+		ft_check_txt(str, "WE ", &t);
 	else if (str[0])
 	{
 		printf("Error map !!");

@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/18 18:07:51 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/21 00:37:33 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,78 +104,20 @@ void	ft_read_map(t_map *t, char **av)
 	}
 	t->all_map2d[j] = NULL;
 }
-void	draw_map(t_map *map)
-{
-	map->mlx_ptr = mlx_init();
-	if (!map->mlx_ptr)
-	{
-		printf("error\n");
-		exit(1);
-	}
-	int i = 0;
-	int j;
-	int x = 0;
-	int y = 0;
-	map->mlx_win = mlx_new_window(map->mlx_ptr, 1950, 1108, "FRATELLO CUB3D");
-	map->mlx_red = mlx_xpm_file_to_image(map->mlx_ptr, "xpmfile/red.xpm" , &map->width, &map->height);
-	map->mlx_chibi = mlx_xpm_file_to_image(map->mlx_ptr, "xpmfile/chibi.xpm" , &map->width, &map->height);
-	// map->mlx_rose = mlx_xpm_file_to_image(map->mlx_ptr, "rose.xpm" , &map->width, &map->height);
-	map->mlx_jnbfo9 = mlx_xpm_file_to_image(map->mlx_ptr, "xpmfile/jenb-fo9.xpm", &map->width, &map->height);
-	map->mlx_jnbte7t = mlx_xpm_file_to_image(map->mlx_ptr, "xpmfile/jenbte7t.xpm", &map->width, &map->height);
-	map->mlx_rightte7t = mlx_xpm_file_to_image(map->mlx_ptr, "xpmfile/right-te7t.xpm", &map->width, &map->height);
-	map->mlx_rightfo9 = mlx_xpm_file_to_image(map->mlx_ptr, "xpmfile/rightfo9.xpm", &map->width, &map->height);
-	while (map->only_map[i])
-	{
-		j = 0;
-		while (map->only_map[i][j])
-		{
-			if (map->only_map[i][j] == '1')
-			{
-				mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->mlx_red, x, y);
-			}
-			else if (map->only_map[i][j] == '0')
-			{
-				mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->mlx_chibi, x, y);
-			}
-			else if (map->only_map[i][j] == '7')
-			{
-				mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->mlx_jnbfo9, x, y);
-			}
-			else if (map->only_map[i][j] == '2')
-			{
-				mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->mlx_jnbte7t, x, y);
-			}
-			else if (map->only_map[i][j] == '3')
-			{
-				mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->mlx_rightte7t, x, y);
-			}
-			else if (map->only_map[i][j] == '9')
-			{
-				mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->mlx_rightfo9, x, y);
-			}
-			// {
-			// 	mlx_put_image_to_window(map->mlx_ptr, map->mlx_win, map->mlx_rose, x, y);
-			// }
-			x += 65;
-			j++;
-		}
-		y += 65;
-		x = 0;
-		i++;
-	}
-}
 
-int check_empty_line(t_map *t)
+int check_empty_line(char *str)
 {
 	int i;
 
 	i = 0;
-	while (t->export_only_map[i])
+	while (str[i])
 	{
-		if (t->export_only_map[i] == '\n' && t->export_only_map[i + 1] == '\n')
-			return (1);
+		if (!str[i + 1])
+			if (str[i] == '\n' && str[i + 1] == '\n')
+				return (1);
 		i++;
 	}
+	printf("hello \n");
 	return (0);	
 }
 
@@ -186,17 +128,21 @@ int ft_export_only_map2d(t_map *t)
 	int i;
 
 	str = NULL;
-	i = 0; 
-	t->only_map = ft_split(t->export_only_map, '\n');
-	while (t->only_map[i])
-	{
-		str = ft_strjoin(str, t->only_map[i]);
-		check = ft_strtrim(str, " \t\n");
-		if (check[0] == '\0')
-			return (1);
-		str = NULL;
-		i++;
-	}
+	i = 0;
+	if (check_empty_line(t->export_only_map) == 0)
+	{	
+		t->only_map = ft_split(t->export_only_map, '\n');
+		
+		while (t->only_map[i])
+		{
+			str = ft_strjoin(str, t->only_map[i]);
+			check = ft_strtrim(str, " \t\n");
+			if (check[0] == '\0')
+				return (1);
+			str = NULL;
+			i++;
+		}
+	}	
 	return (0);
 }
 
@@ -252,22 +198,21 @@ int	main(int ac, char **av)
 	ft_read_map(&map, av);
 	map.map_height = ft_get_len_ofmap(map.all_map2d);
 	map.map_width = get_len(map.all_map2d);
-	retrun_map_2d(&map);
 	ft_check_line_before_map(map.all_map2d, &map);
 	ft_check_map_len(&map);
 	if (ft_export_only_map2d(&map) == 1)
 	{
-		printf("error");
+		printf("errooooor");
 		exit(1);
 	}
+	printf("**************************************%s\n", map.only_map[0]);
 	map.width_only_map = get_width(map.only_map);
 	map.height_only_map = get_height(map.only_map);
+	retrun_map_2d_withspace(&map);
 	if (ft_check_all_map(map.only_map) == 1 || ft_check_content(&map) == 1 || ft_check_horizontal(&map) == 1 || ft_check_vertical(&map) == 1)
 	{
 		printf("error walls\n");
 		exit(EXIT_FAILURE);
 	}
-	// draw_map(&map);
-	// mlx_loop(map.mlx_ptr);
 	return (0);
 }
