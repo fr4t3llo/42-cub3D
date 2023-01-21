@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/21 00:37:33 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/21 01:54:17 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,37 +112,32 @@ int check_empty_line(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!str[i + 1])
-			if (str[i] == '\n' && str[i + 1] == '\n')
+		if (str[i] == '\n')
+		{
+			i++;
+			while (str[i] == ' ' || str[i] == '\t')
+				i++;
+			if (str[i] == '\n')
 				return (1);
+		}
 		i++;
 	}
-	printf("hello \n");
 	return (0);	
 }
 
 int ft_export_only_map2d(t_map *t)
 {
 	char *str;
-	char *check;
 	int i;
 
 	str = NULL;
 	i = 0;
-	if (check_empty_line(t->export_only_map) == 0)
-	{	
-		t->only_map = ft_split(t->export_only_map, '\n');
-		
-		while (t->only_map[i])
-		{
-			str = ft_strjoin(str, t->only_map[i]);
-			check = ft_strtrim(str, " \t\n");
-			if (check[0] == '\0')
-				return (1);
-			str = NULL;
-			i++;
-		}
-	}	
+	if (check_empty_line(t->export_only_map) == 1)
+	{
+		printf("map error\n");
+		exit(1);
+	}
+	t->only_map = ft_split(t->export_only_map, '\n');
 	return (0);
 }
 
@@ -182,6 +177,8 @@ int get_height(char **str)
 }
 
 
+
+
 int	main(int ac, char **av)
 {
 	t_map	map;
@@ -205,7 +202,7 @@ int	main(int ac, char **av)
 		printf("errooooor");
 		exit(1);
 	}
-	printf("**************************************%s\n", map.only_map[0]);
+	// printf("**************************************%s\n", map.only_map[0]);
 	map.width_only_map = get_width(map.only_map);
 	map.height_only_map = get_height(map.only_map);
 	retrun_map_2d_withspace(&map);
