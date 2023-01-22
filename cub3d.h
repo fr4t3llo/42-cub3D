@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/21 23:41:51 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/23 00:16:44 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,16 @@ typedef struct s_rgb
 }		t_rgb;	
 
 // parssing functions
+void 	ft_free(char **tab);
 int		ft_check_map_one(char **tab);
 int		ft_check_all_map(char **map);
 int		ft_check_all_map2(t_map *map);
 int 	ft_check_horizontal(t_map *map);
 int 	ft_check_vertical(t_map *map);
 int		error(t_map *map);
+char *ft_strcpy(char *str, char *str2);
 int 	get_len(char **str);
+int 	ft_check_line_rgb(const char *str);
 void	retrun_map_2d_withspace(t_map *map);
 int 	ft_get_len_ofmap(char **str);
 void	check_line_txt_rgb(char *str, t_map *map);
