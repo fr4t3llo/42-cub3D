@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:44:09 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/23 00:18:04 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/23 00:21:10 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ int	ft_check_rgb_error_c(char *line, t_rgb t)
 		rgb = ft_split(line, ',');
 		if (ft_check(rgb[0]) == 0 && ft_check(rgb[1]) == 0 && ft_check(rgb[2]) == 0)
 		{	
-			// if (ft_strlen(rgb[0]) <= 3)
 			t.r_C = ft_atoi(rgb[0]);
 			t.g_C = ft_atoi(rgb[1]);
 			t.b_C = ft_atoi(rgb[2]);
@@ -150,86 +149,31 @@ int	ft_check_rgb_error_c(char *line, t_rgb t)
 	return (1);
 }
 
-void	ft_check_color2(char *line, t_map *map)
+void	ft_check_color2(char *line)
 {
-	// int		i;
-	// int		k;
 	char	*file;
 	t_rgb	t;
 
 	ft_memset(&t, 0, sizeof(t));
-	// t.b_F = 0;
-	// file = (char *)malloc(sizeof(char) * ft_strlen(line) - 1);
-	// i = 1;
-	// k = 0;
-	// while (line[i] == ' ')
-	// 	i++;
-	// while (line[i])
-	// {
-	// 	file[k] = line[i];
-	// 	i++;
-	// 	k++;
-	// }
-	// file[k] = '\0';
 	file = ft_strdup(line);
 	if (ft_check_rgb_error_c(file, t) == 1)
 	{
 		printf("ERROR rgb color\n");
 		exit(1);
 	}
-	(void)map;
 }
 
-void	ft_check_color(char *line, t_map *map)
+void	ft_check_color(char *line)
 {
 
 	char	*file;
 	t_rgb	t;
 
 	ft_memset(&t, 0, sizeof(t));
-	// t.b_F = 0;
-	// file = (char *)malloc(sizeof(char) * ft_strlen(line) - 1);
-	// i = 1;
-	// k = 0;
-	// while (line[i] == ' ')
-	// 	i++;
-	// while (line[i])
-	// {
-	// 	file[k] = line[i];
-	// 	i++;
-	// 	k++;
-	// }
-	// file[k] = '\0';
 	file = ft_strdup(line);
 	if (ft_check_rgb_error_f(file, t) == 1)
 	{
 		printf("ERROR rgb color\n");
 		exit(1);
 	}
-	(void)map;
-	
-	// int		i;
-	// int		k;
-	// char	*file;
-	// t_rgb	t;
-
-	// t.b_F = 0;
-	// file = (char *)malloc(sizeof(char) * ft_strlen(line) - 1);
-	// i = 1;
-	// k = 0;
-	// while (line[i] == ' ')
-	// 	i++;
-	// while (line[i])
-	// {
-	// 	file[k] = line[i];
-	// 	i++;
-	// 	k++;
-	// }
-	// file[k] = '\0';
-	// if (ft_check_rgb_error_f(file, t) == 1)
-	// {
-	// 	printf("ERROR rgb color\n");
-	// 	exit(1);
-	// }
-	// (void)map;
 }

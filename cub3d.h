@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/23 00:16:44 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/23 00:21:29 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int		ft_check_all_map2(t_map *map);
 int 	ft_check_horizontal(t_map *map);
 int 	ft_check_vertical(t_map *map);
 int		error(t_map *map);
-char *ft_strcpy(char *str, char *str2);
+char 	*ft_strcpy(char *str, char *str2);
 int 	get_len(char **str);
 int 	ft_check_line_rgb(const char *str);
 void	retrun_map_2d_withspace(t_map *map);
@@ -100,8 +100,8 @@ void 	ft_check_map_len(t_map *t);
                 //RGB FUNCTIONS
 int 	ft_check_rgb_error_f(char *line, t_rgb t);
 int 	ft_check_rgb_error_c(char *line, t_rgb t);
-void	ft_check_color2(char *line, t_map *map);
-void	ft_check_color(char *line, t_map *map);
+void	ft_check_color2(char *line);
+void	ft_check_color(char *line);
 				// TEXTUTRE FUNCTION
 void ft_check_txt(char *path, char *type, t_texture *t);
 
