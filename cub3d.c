@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/21 01:54:17 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/22 00:00:09 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int ft_check_content(t_map *map)
 		}	
 		i++;
 	}
-	if (idx > 1 || idx == 0)
+	if (idx != 1)
 		return (1);
 	return (0);
 }
@@ -77,7 +77,7 @@ void	ft_read_map(t_map *t, char **av)
 
 	j = 0;
 	i = 0;
-	t->fd = open(av[1], O_RDONLY);
+	t->fd = open(av[1], O_RDWR);
 	if (t->fd < 0)
 	{
 		printf("\033[0;31mfile not found !!\n");
@@ -90,12 +90,13 @@ void	ft_read_map(t_map *t, char **av)
 		t->tab = get_next_line(t->fd);
 		i++;
 	}
+	t->map_height = i;
 	t->all_map2d = (char **)malloc((i + 1) * sizeof(char *));
 	if (!t->all_map2d)
 		return ;
 	j = 0;
 	close(t->fd);
-	t->fd = open(av[1], O_RDONLY);
+	t->fd = open(av[1], O_RDWR);
 	t->all_map2d[j] = get_next_line(t->fd);
 	while (j < i)
 	{
@@ -193,7 +194,8 @@ int	main(int ac, char **av)
 		exit(1);
 	}
 	ft_read_map(&map, av);
-	map.map_height = ft_get_len_ofmap(map.all_map2d);
+	// map.map_height = ft_get_len_ofmap(map.all_map2d);
+	// printf("map.map_height == %d\n", map.map_height);
 	map.map_width = get_len(map.all_map2d);
 	ft_check_line_before_map(map.all_map2d, &map);
 	ft_check_map_len(&map);
@@ -202,14 +204,36 @@ int	main(int ac, char **av)
 		printf("errooooor");
 		exit(1);
 	}
-	// printf("**************************************%s\n", map.only_map[0]);
 	map.width_only_map = get_width(map.only_map);
 	map.height_only_map = get_height(map.only_map);
 	retrun_map_2d_withspace(&map);
-	if (ft_check_all_map(map.only_map) == 1 || ft_check_content(&map) == 1 || ft_check_horizontal(&map) == 1 || ft_check_vertical(&map) == 1)
-	{
-		printf("error walls\n");
-		exit(EXIT_FAILURE);
-	}
+	// if (ft_check_content(&map))
+	// {
+	// 	printf("error walls content\n");
+	// 	exit(EXIT_FAILURE);
+	// }
+	// if (ft_check_horizontal(&map))
+	// {
+	// 	printf("error walls horizn\n");
+	// 	exit(EXIT_FAILURE);
+	// }
+	// // if (ft_check_err(&map))
+	// // {
+	// // 	printf("error walls horizn\n");
+	// // 	exit(EXIT_FAILURE);
+	// // }
+	
+	// if (ft_check_vertical(&map))
+	// {
+	// 	printf("error walls vertic\n");
+	// 	exit(EXIT_FAILURE);
+	// }
+	// 	printf("here\n");
+	
+	// if (ft_check_all_map(map.only_map))
+	// {
+	// 	printf("error walls all map\n");
+	// 	exit(EXIT_FAILURE);
+	// }
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:23:44 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/20 23:58:18 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/21 23:33:55 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void ft_check_txt(char *path, char *type, t_texture *t)
 	char **str = ft_split(path, ' ');
 	if (!ft_strncmp(path, type, 3) /*|| ft_strchr(".xpm", path[])*/)
 	{
-		fd = open(str[1], O_RDONLY);
+		fd = open(str[1], O_RDWR);
 		if (fd < 0)
 		{
 			printf("Error texture\n");

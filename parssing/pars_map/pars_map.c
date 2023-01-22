@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:33:03 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/21 00:27:34 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/21 20:14:38 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_cmplt_horz(t_map *map, int i, int j)
 		if (map->only_map[i][j] != '1')
 			return (1);
 	}
-	else if (j == map->width_only_map - 1)
+	else if (j == map->width_only_map )
 	{
 		if (map->only_map[i][j] != ' ')
 			if (map->only_map[i][j] != '1')
@@ -60,7 +60,7 @@ int	ft_cmplt_ver(t_map *map, int i, int j)
 		if (map->only_map[i][j] != '1')
 			return (1);
 	}
-	else if (i == map->height_only_map - 1)
+	else if (i == map->height_only_map)
 	{
 		if (map->only_map[i][j] != ' ')
 			if (map->only_map[i][j] != '1')
@@ -72,7 +72,6 @@ int	ft_cmplt_ver(t_map *map, int i, int j)
 			if (map->only_map[i][j] != '1')
 				return (1);
 	}
-	// printf("ana hna \n");
     return (0);
 }
 
@@ -95,27 +94,27 @@ int	ft_check_vertical(t_map *map)
 	return (0);
 }
 
-int	ft_check_err(char **str, int i, int j)
-{
-	if (str[i][j + 1] != '1' && str[i][j + 1] != '0' && !ft_strchr("SWEN",
-			str[i][j + 1]))
-		return (1);
-	if (str[i][j - 1] != '1' && str[i][j - 1] != '0' && !ft_strchr("SEWN",
-			str[i][j - 1]))
-		return (1);
-	if (str[i + 1][j] != '1' && str[i + 1][j] != '0' && !ft_strchr("SEWN", str[i
-			+ 1][j]))
-		return (1);
-	if (str[i - 1][j] != '1' && str[i - 1][j] != '0' && !ft_strchr("SEWN", str[i
-			- 1][j]))
-		return (1);
-	if (!str[i][j + 1])
-		return (1);
-	if (!str[i][j - 1])
-		return (1);
-	if (!str[i + 1][j])
-		return (1);
-	if (!str[i - 1][j])
-		return (1);
-	return (0);
-}
+// int	ft_check_err(char **str, int i, int j)
+// {
+// 	if (str[i][j + 1] != '1' && str[i][j + 1] != '0' && !ft_strchr("SWEN",
+// 			str[i][j + 1]))
+// 		return (1);
+// 	if (str[i][j - 1] != '1' && str[i][j - 1] != '0' && !ft_strchr("SEWN",
+// 			str[i][j - 1]))
+// 		return (1);
+// 	if (str[i + 1][j] != '1' && str[i + 1][j] != '0' && !ft_strchr("SEWN",
+// 	str[i + 1][j]))
+// 		return (1);
+// 	if (str[i - 1][j] != '1' && str[i - 1][j] != '0' && !ft_strchr("SEWN", str[i
+// 			- 1][j]))
+// 		return (1);
+// 	if (!str[i][j + 1])
+// 		return (1);
+// 	if (!str[i][j - 1])
+// 		return (1);
+// 	if (!str[i + 1][j])
+// 		return (1);
+// 	if (!str[i - 1][j])
+// 		return (1);
+// 	return (0);
+// }

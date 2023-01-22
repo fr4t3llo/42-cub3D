@@ -6,14 +6,14 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:44:31 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/21 02:33:11 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/21 23:46:58 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
 
-int ft_get_len_ofmap(char **str)
+int ft_get_len_ofmap(char **str) // hdra m3awda 
 {
 	int i;
 	
@@ -49,30 +49,31 @@ int get_len(char **str)
 	return (j);
 }
 
-void retrun_map_2d_withspace(t_map *map)
+void	retrun_map_2d_withspace(t_map *map)
 {
 	int k;
 	int nb;
+	int count;
+	int count_width;
 	
-	k = 0; //error hna khasso itfixa dyal join 
-	map->map_to_execute = (char **)malloc(sizeof(char **) * map->height_only_map);
-	while (map->height_only_map > 0)
-	{	
-		if (ft_strlen(map->only_map[k]) < map->width_only_map)
+	count = map->height_only_map;
+	count_width = map->width_only_map;
+	k = 0;
+	while (count > 0)
+	{
+		if (ft_strlen(map->only_map[k]) < count_width)
 		{
 			nb = ft_strlen(map->only_map[k]);
-			while (nb != map->width_only_map)
+			while (nb != count_width)
 			{
-				map->map_to_execute[k] = ft_strjoin(map->only_map[k], "*");
+				map->only_map[k] = ft_strjoin(map->only_map[k], " ");
 				nb++;
-			} 
+			}
 			k++;
-			printf("%s\n", map->map_to_execute[k]);
 		}
-		else
+		else 
 			k++;
-				printf("ana hna\n");
-		map->height_only_map--;
+		count--;
 	}
 	map->height_only_map = ft_get_len_ofmap(map->only_map);
 }
