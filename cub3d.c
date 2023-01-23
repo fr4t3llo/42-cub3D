@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/23 09:04:07 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/23 09:15:29 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,125 +178,6 @@ int get_height(char **str)
 	return (i);	
 }
 
-// void skip_space(char *str, size_t *j) {
-// 	while (str[*j] != '\0' && str[*j] == ' ') {
-// 		(*j)++;
-// 	}
-// }
-
-
-// void check_map(t_map *map) {
-// 	size_t i;
-// 	size_t j;
-// 	i = 0;
-// 	j = 0;
-
-// 	// check first line
-// 	while (map->only_map[i][j] != '\0')
-// 	{
-// 		if (map->only_map[i][j] == ' ') {
-// 			j++;
-// 			continue;
-// 		}
-// 		else if (map->only_map[i][j] != '1') {
-// 			printf("i = %zu , j = %zu\n", i , j);
-// 			printf("Error: map first line\n");
-// 			exit(1);
-// 		}
-// 		j++;
-// 	}
-// 	// check last line
-// 	j = 0;
-// 	i = 0;
-// 	while (map->only_map[map->height_only_map - 1][j] != '\0')
-// 	{
-// 		if (map->only_map[map->height_only_map - 1][j] == ' ') {
-// 			j++;
-// 			continue;
-// 		}
-// 		else if (map->only_map[map->height_only_map - 1][j] != '1') {
-// 			printf("Error: map first line\n");
-// 			printf("i = %zu , j = %zu\n", i , j);
-// 			exit(1);
-// 		}
-// 		j++;
-// 	}
-// 	// check first
-// 	j = 0;
-// 	i = 0;
-
-// 	while(j < map->height_only_map - 1) {
-// 		i = 0;
-// 		while (map->only_map[j][i] == ' '){
-// 			i++;
-// 		}
-// 		if (map->only_map[j][i] != '1') {
-// 			printf("Error: 0 3ryan");
-// 			printf("i = %zu , j = %zu\n", i , j);
-
-// 			exit(1);
-// 		}
-// 		j++;
-// 	}
-// 	//check last
-// 	j = 0;
-// 	i = 0;
-// 	while(j < map->height_only_map - 1) {
-// 	i = map->width_only_map - 1;
-// 	while (map->only_map[j][i] == ' '){
-// 		i--;
-// 	}
-// 	if (map->only_map[j][i] != '1') {
-// 		printf("Error: 0 3ryan");
-// 			printf("i = %zu , j = %zu\n", i , j);
-
-// 		exit(1);
-// 	}
-// 	j++;
-// 	}
-	
-// 	// check 0 
-// 	j = 0;
-// 	i = 0;
-
-// 	while (map->only_map[i] ){
-// 		j = 0;
-// 		while (map->only_map[i][j]) {
-// 			if (map->only_map[i][j] == '0' && (j != 0 && map->only_map[i][j - 1] == ' ') && (map->only_map[i][j + 1] == ' ')) {
-// 				// if (map->only_map[i][j + 1] == ' ') {
-// 					printf("Error: 0 3ryan");
-// 					printf("i = %zu , j = %zu -\n", i , j);
-// 					exit(1);
-// 				// }	
-// 			}
-// 			// else if (j != 0 && map->only_map[i][j - 1] == ' '){
-// 				// 
-// 				// printf("Error: 0 3ryan");
-// 				// printf("i = %zu , j = %zu --\n", i , j);
-// 				// exit(1);
-// 			// }
-// 			else if (i != map->height_only_map - 1 && i != 0 && map->only_map[i + 1][j] == ' ') {
-// 				skip_space(map->only_map[i + 1] , &j);
-// 				if (map->only_map[i + 1][j] == '0') {
-// 					printf("Error: 0 3ryan");
-// 					printf("i = %zu , j = %zu ---\n", i , j);
-// 					exit(1);		
-// 				}
-// 			}
-// 			else if (i != map->height_only_map - 1 && i != 0 && map->only_map[i - 1][j] == ' ') {
-// 				skip_space(map->only_map[i - 1] , &j);
-// 				if (map->only_map[i - 1][j] == '0') {
-// 					printf("Error: 0 3ryan");
-// 					printf("i = %zu , j = %zu ---\n", i , j);
-// 					exit(1);		
-// 				}
-// 			}
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
-
 int	main(int ac, char **av)
 {
 	t_map	map;
@@ -317,8 +198,6 @@ int	main(int ac, char **av)
 		exit(1);
 	}
 	ft_read_map(&map, av);
-	// map.map_height = ft_get_len_ofmap(map.all_map2d);
-	// printf("map.map_height == %d\n", map.map_height);
 	map.map_width = get_len(map.all_map2d);
 	ft_check_line_before_map(map.all_map2d, &map);
 	ft_check_map_len(&map);
@@ -329,30 +208,13 @@ int	main(int ac, char **av)
 	}
 	map.width_only_map = get_width(map.only_map);
 	map.height_only_map = get_height(map.only_map);
-	// int s = 0;
 	retrun_map_2d_withspace(&map);
-	if (ft_check_content(&map))
+	if (ft_check_content(&map) || ft_check_all_map(map.only_map) || 
+			ft_check_horizontal(&map) || ft_check_vertical(&map))
 	{
 		printf("error walls content\n");
 		exit(EXIT_FAILURE);
 	}
-	if (ft_check_all_map(map.only_map))
-	{
-		printf("error walls all map\n");
-		exit(EXIT_FAILURE);
-	}
-	// check_map(&map);
-	if (ft_check_horizontal(&map))
-	{
-		printf("error walls horizn\n");
-		exit(EXIT_FAILURE);
-	}
-	if (ft_check_vertical(&map))
-	{
-		printf("error walls vertic\n");
-		exit(EXIT_FAILURE);
-	}
-	// 	printf("here\n");
 	
 	return (0);
 }
