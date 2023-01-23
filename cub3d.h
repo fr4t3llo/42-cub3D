@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/23 00:21:29 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/23 06:14:26 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,33 +33,6 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct s_map
-{
-    char    *tab;
-    char    **all_map2d;
-	char	**only_map;
-	char 	**map_to_execute;
-    char    *export_only_map;
-	char	**txt_rgb;
-    int     fd;
-	int		map_width;
-	int		map_height;
-	void	*mlx_ptr;	
-	void	*mlx_win;
-	void	*mlx_red;
-	void	*mlx_chibi;
-	void	*mlx_rose;
-	void	*mlx_jnbfo9;
-	void	*mlx_jnbte7t;
-	void	*mlx_rightte7t;
-	void	*mlx_rightfo9;
-	int		width_only_map;
-	int		height_only_map;
-	int 	width;
-	int 	height;
-	int		line_empty;
-}           t_map;
-
 typedef struct s_texture
 {
 	char	*so;
@@ -67,6 +40,26 @@ typedef struct s_texture
 	char	*we;
 	char	*ea;
 }			t_texture;
+
+typedef struct s_map
+{
+    char    *tab;
+    char    **all_map2d;
+	char	**only_map;
+    char    *export_only_map;
+	char	**txt_rgb;
+    int     fd;
+	int		map_width;
+	int		map_height;
+	int		width_only_map;
+	int		height_only_map;
+	int 	width;
+	int 	height;
+	int		line_empty;
+	int		nb_for_chek_text;
+	t_texture	*t;
+}           t_map;
+
 
 typedef struct s_rgb
 {

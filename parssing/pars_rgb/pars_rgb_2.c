@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:23:44 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/23 00:20:50 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/23 09:06:16 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,46 +28,50 @@ int	ft_check_number_of_comma(char *str)
 	return (nb);
 }
 
-void	ft_check_txt_no(char *line, char *test, t_map *map)
-{
-	int		i;
-	int		k;
-	char	*file;
-	// t_texture	t;
-
-	file = (char *)malloc(sizeof(char) * ft_strlen(line) - 1);
-	i = 1;
-	k = 0;
-	while (line[i] == ' ')
-		i++;
-	while (line[i])
-	{
-		file[k] = line[i];
-		i++;
-		k++;
-	}
-	file[k] = '\0';
-	// if (ft_check_rgb_error_c(file, t) == 1)
-	// {
-	// 	printf("ERROR texture\n");
-	// 	exit(1);
-	// }
-	(void)map;
-	(void)line;
-	(void)map;
-	(void)test;
-}
-
 void copy_texture(char *type, char *path, t_texture *t)
 {
 	if (type[0] == 'W')
-		t->we = ft_strdup(path);
+	{	
+		if (t->we == NULL)
+			t->we = ft_strdup(path);
+		else
+		{
+			printf("6ERROR texture\n");
+			exit (1);
+		}
+	}
 	else if (type[0] == 'E')
-		t->ea = ft_strdup(path);
+	{	
+		if (t->ea == NULL)
+			t->ea = ft_strdup(path);
+		else 
+		{
+			printf("6ERROR texture\n");
+			exit (1);
+		}
+
+	}	
 	else if (type[0] == 'S')
-		t->so = ft_strdup(path);
+	{	
+		if (t->so == NULL)
+			t->so = ft_strdup(path);
+		else
+		{
+			printf("0ERROR texture\n");
+			exit (1);
+		}
+		
+	}
 	else if (type[0] == 'N')
-		t->no = ft_strdup(path);
+	{	
+		if (t->no == NULL)
+			t->no = ft_strdup(path);
+		else 
+		{
+			printf("*ERROR texture\n");
+			exit (1);
+		}
+	}
 	else 
 	{
 		printf("Error texture\n");
@@ -82,11 +86,10 @@ void ft_check_txt(char *path, char *type, t_texture *t)
 	int fd;
 	int i;
 	int len;
-	
 	len = ft_strlen(path);
 	i = 0;
 	char **str = ft_split(path, ' ');
-	if (!ft_strncmp(path, type, 3) /*|| ft_strchr(".xpm", path[])*/)
+	if (!ft_strncmp(path, type, 3))
 	{
 		fd = open(str[1], O_RDWR);
 		if (fd < 0)
@@ -102,24 +105,18 @@ void ft_check_txt(char *path, char *type, t_texture *t)
 
 void	check_line_txt_rgb(char *str, t_map *map)
 {
-	t_texture t;
-	
-	t.ea = NULL;
-	t.we = NULL;
-	t.so = NULL;
-	t.no = NULL;
 	if (str[0] && str[0] == 'C')
 		ft_check_color2(str);
 	else if (str[0] && str[0] == 'F')
 		ft_check_color(str);
 	else if (str[0] && str[0] == 'S')
-		ft_check_txt(str, "SO ", &t);
+		ft_check_txt(str, "SO ", map->t);
 	else if (str[0] && str[0] == 'N')
-		ft_check_txt(str, "NO ", &t);
+		ft_check_txt(str, "NO ", map->t);
 	else if (str[0] && str[0] == 'E')
-		ft_check_txt(str, "EA ", &t);
+		ft_check_txt(str, "EA ", map->t);
 	else if (str[0] && str[0] == 'W')
-		ft_check_txt(str, "WE ", &t);
+		ft_check_txt(str, "WE ", map->t);
 	else if (str[0])
 	{
 		printf("Error map !!");

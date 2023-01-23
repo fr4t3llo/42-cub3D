@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:44:31 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/21 23:46:58 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/23 09:05:34 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int get_len(char **str)
 		else
 			i++;
 	}
-	// printf("%d\n", j);
 	return (j);
 }
 
@@ -75,7 +74,7 @@ void	retrun_map_2d_withspace(t_map *map)
 			k++;
 		count--;
 	}
-	map->height_only_map = ft_get_len_ofmap(map->only_map);
+	// map->height_only_map = ft_get_len_ofmap(map->only_map);
 }
 
 int ft_check_all_map(char **map) // khassni n3tiha ghi map 2d machi map.cub kolha
