@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:38 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/23 06:14:26 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/23 22:10:15 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,11 @@ int		ft_check_all_map2(t_map *map);
 int 	ft_check_horizontal(t_map *map);
 int 	ft_check_vertical(t_map *map);
 int		error(t_map *map);
+int 	check(char *str);
 char 	*ft_strcpy(char *str, char *str2);
 int 	get_len(char **str);
-int 	ft_check_line_rgb(const char *str);
 void	retrun_map_2d_withspace(t_map *map);
 int 	ft_get_len_ofmap(char **str);
-void	check_line_txt_rgb(char *str, t_map *map);
 int 	ft_check_line_ifnotinmap(char *line);
 void 	ft_check_line_before_map(char **str, t_map *map);
 int		ft_check_number_of_comma(char *str);
@@ -95,8 +94,11 @@ int 	ft_check_rgb_error_f(char *line, t_rgb t);
 int 	ft_check_rgb_error_c(char *line, t_rgb t);
 void	ft_check_color2(char *line);
 void	ft_check_color(char *line);
+void	check_line_txt_rgb(char *str, t_map *map);
+int 	ft_check_line_rgb(const char *str);
+
 				// TEXTUTRE FUNCTION
-void ft_check_txt(char *path, char *type, t_texture *t);
+void 	ft_check_txt(char *path, char *type, t_texture *t);
 
 // libft functions
 int     ft_strlen(char *str);

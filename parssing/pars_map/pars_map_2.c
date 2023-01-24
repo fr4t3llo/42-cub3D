@@ -6,28 +6,27 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:44:31 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/23 09:10:15 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/23 21:41:37 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-
-int ft_get_len_ofmap(char **str)
+int	ft_get_len_ofmap(char **str)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (str[i])
 		i++;
 	return (i);
 }
 
-int get_len(char **str)
+int	get_len(char **str)
 {
-	int i;
-	int j;
-	int len;
+	int	i;
+	int	j;
+	int	len;
 
 	len = 0;
 	i = 0;
@@ -40,7 +39,7 @@ int get_len(char **str)
 		if (j < len)
 		{
 			j = len;
-			i++;	
+			i++;
 		}
 		else
 			i++;
@@ -50,11 +49,11 @@ int get_len(char **str)
 
 void	retrun_map_2d_withspace(t_map *map)
 {
-	int k;
-	int nb;
-	int count;
-	int count_width;
-	
+	int	k;
+	int	nb;
+	int	count;
+	int	count_width;
+
 	count = map->height_only_map;
 	count_width = map->width_only_map;
 	k = 0;
@@ -70,16 +69,16 @@ void	retrun_map_2d_withspace(t_map *map)
 			}
 			k++;
 		}
-		else 
+		else
 			k++;
 		count--;
 	}
 }
 
-int ft_check_all_map(char **map)
+int	ft_check_all_map(char **map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -88,7 +87,8 @@ int ft_check_all_map(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] != '1' && map[i][j] != '0' && !ft_strchr(" SEWN", map[i][j]))
+			if (map[i][j] != '1' && map[i][j] != '0' && !ft_strchr(" SEWN",
+					map[i][j]))
 				return (1);
 			j++;
 		}
@@ -97,9 +97,9 @@ int ft_check_all_map(char **map)
 	return (0);
 }
 
-int ft_check_line_ifnotinmap(char *line)
+int	ft_check_line_ifnotinmap(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i])

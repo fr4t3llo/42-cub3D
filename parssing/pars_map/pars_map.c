@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:33:03 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/23 09:10:34 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/23 21:40:44 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_cmplt_horz(t_map *map, int i, int j)
 			if (map->only_map[i][j] != '1')
 				return (1);
 	}
-    return (0);
+	return (0);
 }
 
 int	ft_check_horizontal(t_map *map)
@@ -73,7 +73,7 @@ int	ft_cmplt_ver(t_map *map, int i, int j)
 			if (map->only_map[i][j] != '1')
 				return (1);
 	}
-    return (0);
+	return (0);
 }
 
 int	ft_check_vertical(t_map *map)
@@ -95,4 +95,3 @@ int	ft_check_vertical(t_map *map)
 	}
 	return (0);
 }
-

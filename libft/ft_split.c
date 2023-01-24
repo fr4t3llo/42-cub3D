@@ -6,9 +6,10 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 02:46:32 by skasmi            #+#    #+#             */
-/*   Updated: 2021/11/27 22:24:07 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/23 21:47:41 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 int	ft_is_separator(char c, char cr)

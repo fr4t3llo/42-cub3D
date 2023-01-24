@@ -6,7 +6,7 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:23:44 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/23 09:06:16 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/24 04:25:34 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void ft_check_txt(char *path, char *type, t_texture *t)
 	int fd;
 	int i;
 	int len;
+	
 	len = ft_strlen(path);
 	i = 0;
 	char **str = ft_split(path, ' ');

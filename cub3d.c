@@ -6,18 +6,18 @@
 /*   By: skasmi <skasmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:02:23 by skasmi            #+#    #+#             */
-/*   Updated: 2023/01/23 09:15:29 by skasmi           ###   ########.fr       */
+/*   Updated: 2023/01/23 21:58:13 by skasmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int ft_check_content(t_map *map)
+int	ft_check_content(t_map *map)
 {
-	int i;
-	int j;
-	int idx;
-	
+	int	i;
+	int	j;
+	int	idx;
+
 	i = 0;
 	idx = 0;
 	while (map->only_map[i])
@@ -28,7 +28,7 @@ int ft_check_content(t_map *map)
 			if (ft_strchr("NSWE", map->only_map[i][j]))
 				idx++;
 			j++;
-		}	
+		}
 		i++;
 	}
 	if (idx != 1)
@@ -38,12 +38,12 @@ int ft_check_content(t_map *map)
 
 int	ft_check_map_one(char **tab)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	while(tab[i])
+	while (tab[i])
 	{
 		while (tab[j])
 		{
@@ -63,18 +63,17 @@ int	ft_check_file_map(char **map)
 	i = 0;
 	while (map[1][i])
 		i++;
-	if (map[1][i - 1] == 'b' && map[1][i - 2] == 'u'
-		&& map[1][i - 3] == 'c' && map[1][i - 4] == '.')
+	if (map[1][i - 1] == 'b' && map[1][i - 2] == 'u' && map[1][i - 3] == 'c'
+		&& map[1][i - 4] == '.')
 		return (0);
 	else
-		return (1); 
-	
+		return (1);
 }
 
 void	ft_read_map(t_map *t, char **av)
-{	
-	int i;
-	int j;
+{
+	int	i;
+	int	j;
 
 	j = 0;
 	i = 0;
@@ -82,7 +81,7 @@ void	ft_read_map(t_map *t, char **av)
 	if (t->fd < 0)
 	{
 		printf("\033[0;31mfile not found !!\n");
-		exit(1);		
+		exit(1);
 	}
 	t->tab = get_next_line(t->fd);
 	while (t->tab)
@@ -107,14 +106,14 @@ void	ft_read_map(t_map *t, char **av)
 	t->all_map2d[j] = NULL;
 }
 
-int check_empty_line(char *str)
+int	check_empty_line(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '\n' && str[i+ 1] != '\0')
+		if (str[i] == '\n' && str[i + 1] != '\0')
 		{
 			i++;
 			while (str[i] == ' ' || str[i] == '\t')
@@ -124,13 +123,13 @@ int check_empty_line(char *str)
 		}
 		i++;
 	}
-	return (0);	
+	return (0);
 }
 
-int ft_export_only_map2d(t_map *t)
+int	ft_export_only_map2d(t_map *t)
 {
-	char *str;
-	int i;
+	char	*str;
+	int		i;
 
 	str = NULL;
 	i = 0;
@@ -143,11 +142,11 @@ int ft_export_only_map2d(t_map *t)
 	return (0);
 }
 
-int get_width(char **str)
+int	get_width(char **str)
 {
-	int i;
-	int j;
-	int len;
+	int	i;
+	int	j;
+	int	len;
 
 	len = 0;
 	i = 0;
@@ -160,7 +159,7 @@ int get_width(char **str)
 		if (j < len)
 		{
 			j = len;
-			i++;	
+			i++;
 		}
 		else
 			i++;
@@ -168,29 +167,30 @@ int get_width(char **str)
 	return (j);
 }
 
-int get_height(char **str)
+int	get_height(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 		i++;
-	return (i);	
+	return (i);
 }
 
 int	main(int ac, char **av)
 {
-	t_map	map;
-	t_texture t;
+	t_map		map;
+	t_texture	t;
+
 	t.ea = NULL;
 	t.no = NULL;
 	t.so = NULL;
 	t.we = NULL;
 	map.t = &t;
-    if (ac != 2)
+	if (ac != 2)
 	{
 		printf("Error Args !!!\n");
-		exit(1); 
+		exit(1);
 	}
 	if (ft_check_file_map(av) == 1)
 	{
@@ -209,12 +209,11 @@ int	main(int ac, char **av)
 	map.width_only_map = get_width(map.only_map);
 	map.height_only_map = get_height(map.only_map);
 	retrun_map_2d_withspace(&map);
-	if (ft_check_content(&map) || ft_check_all_map(map.only_map) || 
-			ft_check_horizontal(&map) || ft_check_vertical(&map))
+	if (ft_check_content(&map) || ft_check_all_map(map.only_map) ||
+		ft_check_horizontal(&map) || ft_check_vertical(&map))
 	{
 		printf("error walls content\n");
 		exit(EXIT_FAILURE);
 	}
-	
 	return (0);
 }
